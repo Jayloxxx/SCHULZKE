@@ -1,0 +1,546 @@
+/* ===================================
+   ADVANCED PARALLAX & SCROLL EFFECTS
+   Schulzke Bau & Industriemontagen
+   =================================== */
+
+/* ===================================
+   1. PARALLAX LAYERS
+   =================================== */
+
+.parallax-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.parallax-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.parallax-layer-back {
+    transform: translateZ(-1px) scale(2);
+}
+
+.parallax-layer-base {
+    transform: translateZ(0);
+}
+
+.parallax-layer-front {
+    transform: translateZ(1px) scale(0.5);
+}
+
+/* ===================================
+   2. HORIZONTAL SCROLL ON VERTICAL
+   =================================== */
+
+.horizontal-scroll-wrapper {
+    overflow: hidden;
+    width: 100%;
+}
+
+.horizontal-scroll-content {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+}
+
+/* ===================================
+   3. SCROLL-LINKED ANIMATIONS
+   =================================== */
+
+/* Fade & Scale basierend auf Scroll */
+.scroll-fade {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.6s, transform 0.6s;
+}
+
+.scroll-fade.in-view {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Rotation beim Scroll */
+.scroll-rotate {
+    transition: transform 0.3s ease-out;
+    will-change: transform;
+}
+
+/* ===================================
+   4. DEPTH LAYERS
+   =================================== */
+
+.depth-layer-1 {
+    transform: translateZ(0px);
+    transition: transform 0.1s linear;
+}
+
+.depth-layer-2 {
+    transform: translateZ(-50px) scale(1.1);
+    transition: transform 0.1s linear;
+}
+
+.depth-layer-3 {
+    transform: translateZ(-100px) scale(1.2);
+    transition: transform 0.1s linear;
+}
+
+/* ===================================
+   5. SCROLL TIMELINE ANIMATIONS (Modern)
+   =================================== */
+
+@supports (animation-timeline: scroll()) {
+    .scroll-timeline-fade {
+        animation: timeline-fade linear;
+        animation-timeline: scroll();
+        animation-range: entry 0% exit 100%;
+    }
+
+    .scroll-timeline-scale {
+        animation: timeline-scale linear;
+        animation-timeline: scroll();
+        animation-range: entry 0% exit 50%;
+    }
+
+    .scroll-timeline-rotate {
+        animation: timeline-rotate linear;
+        animation-timeline: scroll();
+        animation-range: entry 0% exit 100%;
+    }
+
+    @keyframes timeline-fade {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes timeline-scale {
+        from {
+            transform: scale(0.8);
+        }
+        to {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes timeline-rotate {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+/* ===================================
+   6. PARALLAX TEXT EFFECTS
+   =================================== */
+
+.parallax-text {
+    position: relative;
+    display: inline-block;
+}
+
+.parallax-text-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.1s ease-out;
+}
+
+/* Text bewegt sich horizontal */
+.text-slide-left {
+    transition: transform 0.3s ease-out;
+}
+
+.text-slide-right {
+    transition: transform 0.3s ease-out;
+}
+
+/* ===================================
+   7. BACKGROUND PARALLAX
+   =================================== */
+
+.bg-parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.bg-parallax::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    transform: translateZ(-1px) scale(2);
+}
+
+/* ===================================
+   8. STICKY SCROLL SECTIONS
+   =================================== */
+
+.sticky-scroll-section {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===================================
+   9. REVEAL ON SCROLL
+   =================================== */
+
+.reveal-left {
+    transform: translateX(-100px);
+    opacity: 0;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-right {
+    transform: translateX(100px);
+    opacity: 0;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-up {
+    transform: translateY(100px);
+    opacity: 0;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-down {
+    transform: translateY(-100px);
+    opacity: 0;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-left.revealed,
+.reveal-right.revealed,
+.reveal-up.revealed,
+.reveal-down.revealed {
+    transform: translate(0, 0);
+    opacity: 1;
+}
+
+/* ===================================
+   10. ZOOM ON SCROLL
+   =================================== */
+
+.zoom-on-scroll {
+    transition: transform 0.3s ease-out;
+    will-change: transform;
+}
+
+/* ===================================
+   11. CLIP-PATH REVEALS
+   =================================== */
+
+.clip-reveal {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.clip-reveal.revealed {
+    clip-path: inset(0 0 0 0);
+}
+
+.clip-reveal-center {
+    clip-path: circle(0% at 50% 50%);
+    transition: clip-path 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.clip-reveal-center.revealed {
+    clip-path: circle(100% at 50% 50%);
+}
+
+/* ===================================
+   12. SPLIT TEXT ANIMATION
+   =================================== */
+
+.split-text-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.split-text-char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px) rotate(-10deg);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+/* ===================================
+   13. SCROLL PROGRESS INDICATORS
+   =================================== */
+
+.section-progress {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+}
+
+.section-progress-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(224, 79, 15, 0.3);
+    margin: 10px 0;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.section-progress-dot.active {
+    background: #e14f0f;
+    transform: scale(1.5);
+}
+
+/* ===================================
+   14. IMAGE PARALLAX CONTAINER
+   =================================== */
+
+.image-parallax-wrapper {
+    overflow: hidden;
+    position: relative;
+    height: 400px;
+}
+
+.image-parallax {
+    position: absolute;
+    width: 100%;
+    height: 120%;
+    object-fit: cover;
+    top: -10%;
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+}
+
+/* ===================================
+   15. SCROLL VELOCITY EFFECTS
+   =================================== */
+
+.velocity-scale {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Schnelles Scrollen = größere Bewegung */
+.scrolling-fast .velocity-scale {
+    transform: scale(1.05);
+}
+
+/* ===================================
+   16. MULTI-LAYER PARALLAX
+   =================================== */
+
+.multi-parallax {
+    position: relative;
+    perspective: 1px;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.parallax-group {
+    position: relative;
+    height: 100vh;
+    transform-style: preserve-3d;
+}
+
+.parallax-layer-bg {
+    transform: translateZ(-2px) scale(3);
+    position: absolute;
+    inset: 0;
+}
+
+.parallax-layer-mid {
+    transform: translateZ(-1px) scale(2);
+    position: absolute;
+    inset: 0;
+}
+
+.parallax-layer-top {
+    transform: translateZ(0);
+    position: relative;
+}
+
+/* ===================================
+   17. SCROLL-SNAP PARALLAX
+   =================================== */
+
+.snap-parallax-container {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+.snap-parallax-section {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* ===================================
+   18. 3D CARD FLIP ON SCROLL
+   =================================== */
+
+.scroll-flip-card {
+    perspective: 1000px;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.scroll-flip-card.flipped {
+    transform: rotateY(180deg);
+}
+
+/* ===================================
+   19. COLOR CHANGE ON SCROLL
+   =================================== */
+
+.color-shift {
+    transition: background-color 0.5s, color 0.5s;
+}
+
+/* ===================================
+   20. MORPHING SHAPES
+   =================================== */
+
+.morph-shape {
+    transition: clip-path 0.8s cubic-bezier(0.65, 0, 0.35, 1),
+                border-radius 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.morph-shape.morphed {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* ===================================
+   21. PERSPECTIVE TEXT
+   =================================== */
+
+.perspective-text {
+    perspective: 500px;
+}
+
+.perspective-text span {
+    display: inline-block;
+    transform: rotateX(0deg);
+    transition: transform 0.6s;
+}
+
+.perspective-text.active span {
+    transform: rotateX(360deg);
+}
+
+/* ===================================
+   22. WAVE EFFECT ON SCROLL
+   =================================== */
+
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.wave-element {
+    animation: wave 2s ease-in-out infinite;
+}
+
+.wave-element:nth-child(1) { animation-delay: 0s; }
+.wave-element:nth-child(2) { animation-delay: 0.1s; }
+.wave-element:nth-child(3) { animation-delay: 0.2s; }
+.wave-element:nth-child(4) { animation-delay: 0.3s; }
+.wave-element:nth-child(5) { animation-delay: 0.4s; }
+
+/* ===================================
+   23. PERFORMANCE OPTIMIZATIONS
+   =================================== */
+
+.parallax-optimized {
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+/* ===================================
+   24. MOBILE ADJUSTMENTS
+   =================================== */
+
+@media (max-width: 768px) {
+    /* Reduced parallax on mobile */
+    .parallax-layer-back {
+        transform: translateZ(-0.5px) scale(1.5);
+    }
+
+    .image-parallax {
+        height: 110%;
+        top: -5%;
+    }
+
+    /* Disable fixed backgrounds on mobile */
+    .bg-parallax {
+        background-attachment: scroll;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .parallax-layer,
+    .scroll-fade,
+    .reveal-left,
+    .reveal-right,
+    .reveal-up,
+    .reveal-down,
+    .zoom-on-scroll,
+    .image-parallax {
+        transition: none !important;
+        animation: none !important;
+        transform: none !important;
+    }
+}
+
+/* ===================================
+   25. DEBUG HELPERS
+   =================================== */
+
+.debug-scroll-position {
+    position: fixed;
+    top: 100px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: monospace;
+    z-index: 10000;
+    display: none;
+}
+
+.debug-mode .debug-scroll-position {
+    display: block;
+}

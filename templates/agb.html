@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+
+{% block title %}AGB - Schulzke Bau- & Industriemontagen{% endblock %}
+{% block description %}Allgemeine Geschäftsbedingungen von Schulzke Bau- & Industriemontagen{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 pt-32 pb-20">
+    <div class="absolute inset-0 bg-black/10"></div>
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl relative z-10">
+        <!-- Breadcrumb -->
+        <nav class="mb-6">
+            <a href="{{ url_for('index') }}" class="text-white/80 hover:text-white transition-colors">Home</a>
+            <span class="mx-2 text-white/50">/</span>
+            <span class="text-white">AGB</span>
+        </nav>
+
+        <!-- Title with Icon -->
+        <div class="flex items-center gap-4 mb-4">
+            <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+            </div>
+            <h1 class="font-display font-bold text-4xl md:text-5xl text-white">Allgemeine Geschäftsbedingungen</h1>
+        </div>
+        <p class="text-white/90 text-lg max-w-2xl">Unsere AGB für eine transparente Zusammenarbeit</p>
+    </div>
+</div>
+
+<!-- Content Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+
+        <!-- Content -->
+        <div class="prose prose-lg max-w-none">
+            <h2 class="font-display font-bold text-2xl text-dark-900 mb-4">1. Geltungsbereich</h2>
+            <p class="text-gray-600 mb-4">
+                Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen
+                Schulzke Bau- & Industriemontagen (im Folgenden "Auftragnehmer") und dem Kunden
+                (im Folgenden "Auftraggeber").
+            </p>
+            <p class="text-gray-600 mb-8">
+                Abweichende, entgegenstehende oder ergänzende Allgemeine Geschäftsbedingungen des Auftraggebers
+                werden nur dann und insoweit Vertragsbestandteil, als der Auftragnehmer ihrer Geltung
+                ausdrücklich schriftlich zugestimmt hat.
+            </p>
+
+            <h2 class="font-display font-bold text-2xl text-dark-900 mb-4 mt-12">2. Vertragsabschluss</h2>
+            <p class="text-gray-600 mb-4">
+                Der Vertrag kommt durch schriftliche Auftragsbestätigung oder durch Beginn der Ausführung
+                der beauftragten Leistung zustande.
+            </p>
+            <p class="text-gray-600 mb-8">
+                Angebote des Auftragnehmers sind freibleibend und unverbindlich, sofern sie nicht
+                ausdrücklich als verbindlich gekennzeichnet sind.
+            </p>
+
+            <h2 class="font-display font-bold text-2xl text-dark-900 mb-4 mt-12">3. Leistungsumfang</h2>
+            <p class="text-gray-600 mb-4">
+                Der Umfang der zu erbringenden Leistungen ergibt sich aus der Leistungsbeschreibung
+                bzw. dem Angebot des Auftragnehmers.
+            </p>
+            <p class="text-gray-600 mb-4">
+                Änderungen oder Ergänzungen der vereinbarten Leistungen bedürfen der Schriftform.
+            </p>
+            <p class="text-gray-600 mb-8">
+                Der Auftragnehmer ist berechtigt, Teilleistungen zu erbringen und gesondert abzurechnen,
+                sofern dies dem Auftraggeber zumutbar ist.
+            </p>
+
+            <h2 class="font-display font-bold text-2xl text-dark-900 mb-4 mt-12">4. Preise und Zahlungsbedingungen</h2>
+
+            <div class="bg-gray-50 rounded-xl p-6 mb-6">
+                <h3 class="font-semibold text-lg text-dark-900 mb-3">4.1 Preise</h3>
+                <p class="text-gray-600 mb-3">
+                    Alle Preise verstehen sich zuzüglich der gesetzlichen Mehrwertsteuer.
+                </p>
+                <p class="text-gray-600">
+                    Sofern nicht anders vereinbart, gelten die am Tag der Leistungserbringung gültigen Preise.
+                </p>
+            </div>
+
+            <div class="bg-gray-50 rounded-xl p-6 mb-8">
+                <h3 class="font-semibold text-lg text-dark-900 mb-3">4.2 Zahlungsbedingungen</h3>
+                <ul class="list-disc list-inside text-gray-600 space-y-2">
+                    <li>Rechnungen sind innerhalb von 14 Tagen nach Rechnungsdatum ohne Abzug zu zahlen</li>
+                    <li>Bei Zahlungsverzug werden Verzugszinsen in Höhe von 9 Prozentpunkten über dem Basiszinssatz berechnet</li>
+                    <li>Der Auftragnehmer ist berechtigt, Abschlagszahlungen entsprechend dem Leistungsfortschritt zu verlangen</li>
+                </ul>
+            </div>
+
+            <h2 class="font-display font-bold text-2xl text-dark-900 mb-4 mt-12">5. Ausführungsfristen und Termine</h2>
+            <p class="text-gray-600 mb-4">
+                Vereinbarte Fristen und Termine gelten nur dann als verbindlich, wenn sie vom Auftragnehmer
+                ausdrücklich schriftlich als verbindlich bestätigt wurden.
+            </p>
+            <p class="text-gray-600 mb-4">
+                Fristen und Termine gelten als eingehalten, wenn bis zu ihrem Ablauf die Leistung
+                abnahmebereit ist.
+            </p>
+            <p class="text-gray-600 mb-8">
+                Verzögerungen durch höhere Gewalt, Arbeitskampfmaßnahmen, behördliche Eingriffe oder
+                sonstige vom Auftragnehmer nicht zu vertretende Umstände verlängern die Fristen
+                und Termine angemessen.
+            </p>
+
+            <h2 class="font-display font-bold text-2xl text-dark-900 mb-4 mt-12">6. Mitwirkungspflichten des Auftraggebers</h2>
+            <p class="text-gray-600 mb-4">
+                Der Auftraggeber stellt sicher, dass:
+            </p>
+            <ul class="list-disc list-inside text-gray-600 mb-8 space-y-2">
+                <li>Die Baustelle bzw. der Arbeitsort ordnungsgemäß vorbereitet ist</li>
+                <li>Erforderliche Genehmigungen vorliegen</li>
+                <li>Strom-, Wasser- und sonstige Anschlüsse zur Verfügung stehen</li>
+                <li>Der Zugang zur Baustelle gewährleistet ist</li>
+                <li>Notwendige Unterlagen und Informationen rechtzeitig bereitgestellt werden</li>
+            </ul>
+
+            <h2 class="font-display font-bold text-2xl text-dark-900 mb-4 mt-12">7. Gewährleistung</h2>
+            <div class="bg-primary-50 border-l-4 border-primary-600 rounded p-6 mb-6">
+                <h3 class="font-semibold text-lg text-dark-900 mb-3">Gewährleistungsfrist</h3>
+                <p class="text-gray-700">
+                    Die Gewährleistungsfrist beträgt 2 Jahre ab Abnahme der Leistung, soweit gesetzlich
+                    nicht längere Fristen vorgeschrieben sind.
+                </p>
+            </div>
+
+            <p class="text-gray-600 mb-4">
+                Mängel sind unverzüglich schriftlich anzuzeigen. Der Auftragnehmer ist berechtigt,
+                nachzubessern. Erst nach erfolglosem zweiten Nachbesserungsversuch kann der Auftraggeber
+                Minderung verlangen oder vom Vertrag zurücktreten.
+            </p>
+
+            <h2 class="font-display font-bold text-2xl text-dark-900 mb-4 mt-12">8. Haftung</h2>
+            <p class="text-gray-600 mb-4">
+                Der Auftragnehmer haftet für Schäden, die er oder seine Erfüllungsgehilfen vorsätzlich
+                oder grob fahrlässig verursacht haben, unbeschränkt.
+            </p>
+            <p class="text-gray-600 mb-4">
+                Bei leicht fahrlässiger Verletzung wesentlicher Vertragspflichten ist die Haftung
+                auf den vertragstypischen, vorhersehbaren Schaden begrenzt.
+            </p>
+            <p class="text-gray-600 mb-8">
+                Die Haftung für leicht fahrlässige Verletzung unwesentlicher Vertragspflichten ist ausgeschlossen.
+            </p>
+
+            <h2 class="font-display font-bold text-2xl text-dark-900 mb-4 mt-12">9. Aufrechnung und Zurückbehaltungsrecht</h2>
+            <p class="text-gray-600 mb-8">
+                Der Auftraggeber kann nur mit unbestrittenen oder rechtskräftig festgestellten Forderungen
+                aufrechnen. Ein Zurückbehaltungsrecht kann der Auftraggeber nur ausüben, soweit sein
+                Gegenanspruch auf demselben Vertragsverhältnis beruht.
+            </p>
+
+            <h2 class="font-display font-bold text-2xl text-dark-900 mb-4 mt-12">10. Eigentumsvorbehalt</h2>
+            <p class="text-gray-600 mb-8">
+                Die gelieferten Materialien und eingebauten Teile bleiben bis zur vollständigen Bezahlung
+                aller Forderungen aus der Geschäftsbeziehung Eigentum des Auftragnehmers.
+            </p>
+
+            <h2 class="font-display font-bold text-2xl text-dark-900 mb-4 mt-12">11. Schlussbestimmungen</h2>
+            <p class="text-gray-600 mb-4">
+                Es gilt deutsches Recht unter Ausschluss des UN-Kaufrechts.
+            </p>
+            <p class="text-gray-600 mb-4">
+                Erfüllungsort und Gerichtsstand für alle Streitigkeiten aus diesem Vertrag ist der
+                Geschäftssitz des Auftragnehmers, sofern der Auftraggeber Kaufmann, juristische Person
+                des öffentlichen Rechts oder öffentlich-rechtliches Sondervermögen ist.
+            </p>
+            <p class="text-gray-600 mb-8">
+                Sollten einzelne Bestimmungen dieser AGB unwirksam sein oder werden, berührt dies die
+                Wirksamkeit der übrigen Bestimmungen nicht.
+            </p>
+
+            <!-- Contact CTA -->
+            <div class="mt-16 bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-8 text-center">
+                <h3 class="font-display font-bold text-2xl text-dark-900 mb-4">Fragen zu unseren AGB?</h3>
+                <p class="text-gray-600 mb-6">Wir beraten Sie gerne persönlich</p>
+                <a href="{{ url_for('index') }}#kontakt" class="inline-block px-8 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-semibold">
+                    Jetzt Kontakt aufnehmen
+                </a>
+            </div>
+
+            <div class="mt-12 p-6 bg-gray-50 rounded-xl">
+                <p class="text-sm text-gray-600">
+                    <strong class="text-dark-900">Hinweis:</strong> Diese AGB dienen als Vorlage und sollten
+                    von einem Rechtsanwalt auf Ihre individuellen Bedürfnisse angepasst werden.
+                </p>
+            </div>
+
+            <p class="text-sm text-gray-500 mt-8">
+                Stand: {{ "now"|date("d.m.Y") }}<br>
+                Schulzke Bau- & Industriemontagen
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}

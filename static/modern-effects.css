@@ -1,0 +1,663 @@
+/* ===================================
+   MODERNE WEB-ANIMATIONEN 2024
+   Schulzke Bau & Industriemontagen
+   =================================== */
+
+/* ===================================
+   1. GLASSMORPHISM
+   =================================== */
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.glass-navbar {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-overlay {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* ===================================
+   2. LIQUID / GOOEY BUTTONS
+   =================================== */
+
+.liquid-button {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.liquid-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.liquid-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.liquid-button:active {
+    transform: scale(0.95);
+}
+
+/* Gooey Effect */
+.gooey-container {
+    filter: url('#gooey-effect');
+}
+
+/* SVG Filter wird via JS injected */
+
+/* ===================================
+   3. MORPHING LOADER
+   =================================== */
+
+.morphing-loader {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    animation: morph 2s ease-in-out infinite;
+}
+
+@keyframes morph {
+    0%, 100% {
+        border-radius: 50%;
+        transform: rotate(0deg);
+    }
+    25% {
+        border-radius: 0%;
+        transform: rotate(90deg);
+    }
+    50% {
+        border-radius: 50%;
+        transform: rotate(180deg);
+    }
+    75% {
+        border-radius: 0%;
+        transform: rotate(270deg);
+    }
+}
+
+/* ===================================
+   4. SKELETON LOADING
+   =================================== */
+
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        #f0f0f0 0%,
+        #e0e0e0 20%,
+        #e0e0e0 40%,
+        #f0f0f0 100%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    border-radius: 8px;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.skeleton-card {
+    width: 100%;
+    height: 200px;
+}
+
+.skeleton-text {
+    width: 100%;
+    height: 16px;
+    margin-bottom: 8px;
+}
+
+.skeleton-title {
+    width: 60%;
+    height: 24px;
+    margin-bottom: 12px;
+}
+
+/* ===================================
+   5. ADVANCED HOVER STATES
+   =================================== */
+
+.hover-shine {
+    position: relative;
+    overflow: hidden;
+}
+
+.hover-shine::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 70%
+    );
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    transition: transform 0.6s;
+}
+
+.hover-shine:hover::after {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+}
+
+/* Magnetic Hover */
+.magnetic {
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ===================================
+   6. PROGRESS INDICATORS
+   =================================== */
+
+.progress-ring {
+    transform: rotate(-90deg);
+}
+
+.progress-ring__circle {
+    transition: stroke-dashoffset 0.5s ease;
+    stroke-linecap: round;
+}
+
+.progress-bar-animated {
+    position: relative;
+    overflow: hidden;
+    background: #f0f0f0;
+    border-radius: 10px;
+    height: 8px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #e14f0f, #f38b40, #f7b577);
+    background-size: 200% 100%;
+    animation: progress-shine 2s infinite;
+    border-radius: 10px;
+    transition: width 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes progress-shine {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* ===================================
+   7. CARD INTERACTIONS
+   =================================== */
+
+.interactive-card {
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+}
+
+.interactive-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(224, 79, 15, 0.2);
+}
+
+.interactive-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(224, 79, 15, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.interactive-card:hover::before {
+    opacity: 1;
+}
+
+/* ===================================
+   8. VIBRATION EFFECTS
+   =================================== */
+
+@keyframes vibrate {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+    20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+.vibrate-on-hover:hover {
+    animation: vibrate 0.3s;
+}
+
+@keyframes pulse-grow {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(224, 79, 15, 0.7);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(224, 79, 15, 0);
+    }
+}
+
+.pulse-button {
+    animation: pulse-grow 2s infinite;
+}
+
+/* ===================================
+   9. STAGGER REVEAL
+   =================================== */
+
+.stagger-reveal > * {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: stagger-in 0.6s forwards;
+}
+
+.stagger-reveal > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-reveal > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-reveal > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-reveal > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-reveal > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-reveal > *:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes stagger-in {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===================================
+   10. SMOOTH PAGE TRANSITIONS
+   =================================== */
+
+.page-transition-enter {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.page-transition-exit {
+    opacity: 1;
+}
+
+.page-transition-exit-active {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* ===================================
+   11. FLOATING ELEMENTS
+   =================================== */
+
+@keyframes float-smooth {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.float-element {
+    animation: float-smooth 3s ease-in-out infinite;
+}
+
+.float-element:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.float-element:nth-child(3) {
+    animation-delay: 1s;
+}
+
+/* ===================================
+   12. PARTICLE BACKGROUND
+   =================================== */
+
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(224, 79, 15, 0.3);
+    border-radius: 50%;
+    animation: particle-float 20s infinite;
+}
+
+@keyframes particle-float {
+    0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(100px);
+        opacity: 0;
+    }
+}
+
+/* ===================================
+   13. ADVANCED TOOLTIP
+   =================================== */
+
+.tooltip {
+    position: relative;
+}
+
+.tooltip::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    padding: 8px 12px;
+    background: rgba(15, 23, 42, 0.95);
+    color: white;
+    border-radius: 6px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    backdrop-filter: blur(10px);
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: rgba(15, 23, 42, 0.95);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+.tooltip:hover::after {
+    opacity: 1;
+}
+
+/* ===================================
+   14. GRADIENT BORDERS
+   =================================== */
+
+.gradient-border {
+    position: relative;
+    background: white;
+    border-radius: 12px;
+}
+
+.gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 12px;
+    padding: 2px;
+    background: linear-gradient(135deg, #e14f0f, #f38b40, #f7b577);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.gradient-border-animated::before {
+    background: linear-gradient(
+        135deg,
+        #e14f0f,
+        #f38b40,
+        #f7b577,
+        #e14f0f
+    );
+    background-size: 200% 200%;
+    animation: gradient-rotate 3s linear infinite;
+}
+
+@keyframes gradient-rotate {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* ===================================
+   15. CURSOR EFFECTS
+   =================================== */
+
+.cursor-glow {
+    cursor: pointer;
+    position: relative;
+}
+
+.cursor-glow::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(224, 79, 15, 0.5), transparent);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.cursor-glow:hover::after {
+    opacity: 1;
+}
+
+/* ===================================
+   16. MOBILE-OPTIMIZED ANIMATIONS
+   =================================== */
+
+@media (max-width: 768px) {
+    /* Reduzierte Animationen für Mobile */
+    .interactive-card:hover {
+        transform: translateY(-4px) scale(1.01);
+    }
+
+    .pulse-button {
+        animation: none;
+    }
+
+    /* Touch-Feedback */
+    .touch-feedback:active {
+        transform: scale(0.97);
+        transition: transform 0.1s;
+    }
+}
+
+/* ===================================
+   17. SCROLL SNAP (Modern Scrolling)
+   =================================== */
+
+.scroll-snap-container {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+.scroll-snap-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-height: 100vh;
+}
+
+/* ===================================
+   18. TEXT EFFECTS
+   =================================== */
+
+.text-gradient-animated {
+    background: linear-gradient(
+        90deg,
+        #e14f0f,
+        #f38b40,
+        #f7b577,
+        #e14f0f
+    );
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: text-gradient-flow 3s linear infinite;
+}
+
+@keyframes text-gradient-flow {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 300% 50%;
+    }
+}
+
+.text-reveal {
+    position: relative;
+    overflow: hidden;
+}
+
+.text-reveal::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    transform: translateX(-100%);
+    animation: reveal-text 1s forwards;
+}
+
+@keyframes reveal-text {
+    0% {
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* ===================================
+   19. NEUMORPHISM (Optional)
+   =================================== */
+
+.neumorphic {
+    background: #f0f0f0;
+    box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+    transition: all 0.3s;
+}
+
+.neumorphic:hover {
+    box-shadow: 4px 4px 8px #d1d1d1, -4px -4px 8px #ffffff;
+}
+
+.neumorphic-inset {
+    box-shadow: inset 8px 8px 16px #d1d1d1, inset -8px -8px 16px #ffffff;
+}
+
+/* ===================================
+   20. ACCESSIBILITY
+   =================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .float-element,
+    .pulse-button,
+    .particle {
+        animation: none !important;
+    }
+}
+
+/* Focus States */
+.focus-visible:focus-visible {
+    outline: 3px solid #e14f0f;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* ===================================
+   21. PERFORMANCE OPTIMIZATIONS
+   =================================== */
+
+/* GPU Acceleration */
+.gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Will-Change für bessere Performance */
+.will-animate {
+    will-change: transform, opacity;
+}
+
+.will-animate:hover {
+    will-change: auto;
+}

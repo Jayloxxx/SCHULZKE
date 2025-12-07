@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referenzen & Zertifikate | Schulzke Bau- & Industriemontagen</title>
+    <meta name="description" content="Unsere Referenzen und Zertifikate - Erfahren Sie mehr über unsere erfolgreichen Projekte und Qualifikationen.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fef6ee',
+                            100: '#fdebd6',
+                            200: '#fad4ac',
+                            300: '#f7b577',
+                            400: '#f38b40',
+                            500: '#f06b1a',
+                            600: '#e14f0f',
+                            700: '#ba3a0f',
+                            800: '#942f14',
+                            900: '#782813',
+                        },
+                        dark: {
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='animations.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='modern-effects.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='modern-effects-enhanced.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='parallax-scroll.css') }}">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-display {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 transition-all" id="navbar">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="{{ url_for('index') }}" class="flex items-center gap-3">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}"
+                             alt="Schulzke Bau- & Industriemontagen Logo"
+                             class="h-16 w-auto hover:scale-110 transition-transform duration-300 magnetic-btn"
+                             style="filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));">
+                        <div class="flex flex-col">
+                            <span class="font-display font-bold text-xl text-dark-900 leading-tight">SCHULZKE</span>
+                            <span class="text-xs text-gray-600 -mt-0.5">Bau & Industriemontagen</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="{{ url_for('index') }}" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition-colors">Start</a>
+                    <a href="{{ url_for('index') }}#leistungen" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition-colors">Leistungen</a>
+                    <a href="{{ url_for('referenzen_zertifikate') }}" class="nav-link text-primary-600 font-semibold">Referenzen & Zertifikate</a>
+                    <a href="{{ url_for('index') }}#kontakt" class="bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition-colors font-medium magnetic-btn gradient-shadow">Kontakt</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <button class="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5" id="mobileMenuToggle">
+                    <span class="block w-6 h-0.5 bg-gray-800 transition-all"></span>
+                    <span class="block w-6 h-0.5 bg-gray-800 transition-all"></span>
+                    <span class="block w-6 h-0.5 bg-gray-800 transition-all"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden" id="mobileMenu">
+            <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t">
+                <a href="{{ url_for('index') }}" class="block px-3 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600 rounded-md">Start</a>
+                <a href="{{ url_for('index') }}#leistungen" class="block px-3 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600 rounded-md">Leistungen</a>
+                <a href="{{ url_for('referenzen_zertifikate') }}" class="block px-3 py-2 bg-primary-50 text-primary-600 rounded-md font-medium">Referenzen & Zertifikate</a>
+                <a href="{{ url_for('index') }}#kontakt" class="block mx-3 my-2 px-3 py-2 bg-primary-600 text-white text-center rounded-md">Kontakt</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900 text-white overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;1&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        </div>
+
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-flex items-center px-4 py-2 bg-primary-600/20 border border-primary-500/30 rounded-full text-primary-400 text-sm font-medium mb-6 backdrop-blur-sm scale-in breathe">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    Qualität & Expertise
+                </div>
+                <h1 class="font-display font-bold text-5xl md:text-6xl mb-6">
+                    <span class="text-gradient-animated">Referenzen</span> & Zertifikate
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
+                    Vertrauen Sie auf unsere langjährige Erfahrung und nachweisbare Qualifikationen
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Referenzen Section -->
+    <section class="py-20 md:py-32 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-block px-4 py-2 bg-primary-100 text-primary-600 rounded-full text-sm font-semibold mb-6">
+                    Unsere Referenzen
+                </div>
+                <h2 class="font-display font-bold text-4xl md:text-5xl text-dark-900 mb-6">
+                    <span class="text-gradient-animated">Erfolgreiche</span> Partnerschaften
+                </h2>
+                <p class="text-lg text-gray-600">
+                    Seit über 25 Jahren vertrauen renommierte Unternehmen und Institutionen auf unsere Expertise
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Reference Card 1 -->
+                <div class="group bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-primary-600 hover:shadow-xl transition-all duration-300 card-3d card-glow spotlight gradient-shadow scale-in">
+                    <div class="flex items-start gap-4">
+                        <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-600/30 breathe">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-display font-bold text-xl text-dark-900 mb-2">Allianz Handwerkerservice</h3>
+                            <p class="text-gray-600 text-sm">Vertrauenspartner für hochwertige Handwerksleistungen</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reference Card 2 -->
+                <div class="group bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-primary-600 hover:shadow-xl transition-all duration-300 card-3d card-glow spotlight gradient-shadow scale-in">
+                    <div class="flex items-start gap-4">
+                        <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-600/30 breathe">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-display font-bold text-xl text-dark-900 mb-2">Schulen SPI Berlin</h3>
+                            <p class="text-gray-600 text-sm">Zuverlässiger Partner im Bildungssektor</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reference Card 3 -->
+                <div class="group bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-primary-600 hover:shadow-xl transition-all duration-300 card-3d card-glow spotlight gradient-shadow scale-in">
+                    <div class="flex items-start gap-4">
+                        <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-600/30 breathe">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-display font-bold text-xl text-dark-900 mb-2">AWO Objekte Berlin</h3>
+                            <p class="text-gray-600 text-sm">Soziale Einrichtungen mit Qualität betreut</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reference Card 4 -->
+                <div class="group bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-primary-600 hover:shadow-xl transition-all duration-300 card-3d card-glow spotlight gradient-shadow scale-in">
+                    <div class="flex items-start gap-4">
+                        <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-600/30 breathe">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-display font-bold text-xl text-dark-900 mb-2">Arztpraxen</h3>
+                            <p class="text-gray-600 text-sm">Berlin und Brandenburg - Medizinische Einrichtungen</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reference Card 5 -->
+                <div class="group bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-primary-600 hover:shadow-xl transition-all duration-300 card-3d card-glow spotlight gradient-shadow scale-in">
+                    <div class="flex items-start gap-4">
+                        <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-600/30 breathe">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-display font-bold text-xl text-dark-900 mb-2">Hornbach</h3>
+                            <p class="text-gray-600 text-sm">Langjährige Zusammenarbeit im Baumarktsektor</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reference Card 6 -->
+                <div class="group bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-primary-600 hover:shadow-xl transition-all duration-300 card-3d card-glow spotlight gradient-shadow scale-in">
+                    <div class="flex items-start gap-4">
+                        <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-600/30 breathe">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-display font-bold text-xl text-dark-900 mb-2">Helmabau</h3>
+                            <p class="text-gray-600 text-sm">Strategische Partnerschaft im Bauwesen</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reference Card 7 -->
+                <div class="group bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-primary-600 hover:shadow-xl transition-all duration-300 card-3d card-glow spotlight gradient-shadow scale-in">
+                    <div class="flex items-start gap-4">
+                        <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-600/30 breathe">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-display font-bold text-xl text-dark-900 mb-2">Deutschlandweit & EU</h3>
+                            <p class="text-gray-600 text-sm">Alt- und Neubauwohnungen, Häuser und neue Projekte</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reference Card 8 -->
+                <div class="group bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-primary-600 hover:shadow-xl transition-all duration-300 card-3d card-glow spotlight gradient-shadow scale-in">
+                    <div class="flex items-start gap-4">
+                        <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-600/30 breathe">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-display font-bold text-xl text-dark-900 mb-2">Hausverwaltungen</h3>
+                            <p class="text-gray-600 text-sm">Diverse Hausverwaltungen in Berlin und Brandenburg</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reference Card 9 -->
+                <div class="group bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-primary-600 hover:shadow-xl transition-all duration-300 card-3d card-glow spotlight gradient-shadow scale-in">
+                    <div class="flex items-start gap-4">
+                        <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-600/30 breathe">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-display font-bold text-xl text-dark-900 mb-2">Novoferm</h3>
+                            <p class="text-gray-600 text-sm">Kooperation mit führendem Tür- und Torhersteller</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reference Card 10 -->
+                <div class="group bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-primary-600 hover:shadow-xl transition-all duration-300 card-3d card-glow spotlight gradient-shadow scale-in">
+                    <div class="flex items-start gap-4">
+                        <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-600/30 breathe">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-display font-bold text-xl text-dark-900 mb-2">Heim und Haus</h3>
+                            <p class="text-gray-600 text-sm">Vertrauensvolle Kooperation im Hausmodernisierungsbereich</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reference Card 11 -->
+                <div class="group bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-primary-600 hover:shadow-xl transition-all duration-300 card-3d card-glow spotlight gradient-shadow scale-in">
+                    <div class="flex items-start gap-4">
+                        <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-600/30 breathe">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-display font-bold text-xl text-dark-900 mb-2">Photon Gruppe</h3>
+                            <p class="text-gray-600 text-sm">Innovationspartnerschaft im Energiesektor</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reference Card 12 -->
+                <div class="group bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-primary-600 hover:shadow-xl transition-all duration-300 card-3d card-glow spotlight gradient-shadow scale-in">
+                    <div class="flex items-start gap-4">
+                        <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-primary-600/30 breathe">
+                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-display font-bold text-xl text-dark-900 mb-2">Frank Sievers</h3>
+                            <p class="text-gray-600 text-sm">Bauherrenbetreuung Deutsch Evern</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Zertifikate Section -->
+    <section class="py-20 md:py-32 bg-gradient-to-br from-gray-50 to-gray-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-block px-4 py-2 bg-primary-100 text-primary-600 rounded-full text-sm font-semibold mb-6">
+                    Unsere Zertifikate
+                </div>
+                <h2 class="font-display font-bold text-4xl md:text-5xl text-dark-900 mb-6">
+                    Qualifikationen & <span class="text-gradient-animated">Zertifizierungen</span>
+                </h2>
+                <p class="text-lg text-gray-600">
+                    Nachweisbare Expertise und kontinuierliche Weiterbildung für höchste Qualitätsstandards
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Certificate 1 -->
+                <div class="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-l-4 border-primary-600 card-glow gradient-shadow spotlight scale-in border-beam">
+                    <div class="absolute top-6 right-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center shadow-lg breathe">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="pr-20">
+                        <h3 class="font-display font-bold text-2xl text-dark-900 mb-4">Autorisierter Facherrichter</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Fachkraft gem. DIBt und DIN 14677 für Feststellanlagen an Brandschutztüren
+                        </p>
+                        <div class="flex items-center gap-2 text-sm text-primary-600 font-semibold">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            Zertifiziert nach DIBt & DIN 14677
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certificate 2 -->
+                <div class="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-l-4 border-primary-600 card-glow gradient-shadow spotlight scale-in border-beam">
+                    <div class="absolute top-6 right-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center shadow-lg breathe">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="pr-20">
+                        <h3 class="font-display font-bold text-2xl text-dark-900 mb-4">Elektromonteur</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Gesellenbrief als Elektromonteur mit umfassender Fachkompetenz
+                        </p>
+                        <div class="flex items-center gap-2 text-sm text-primary-600 font-semibold">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            Handwerkskammer zertifiziert
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certificate 3 -->
+                <div class="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-l-4 border-primary-600 card-glow gradient-shadow spotlight scale-in border-beam">
+                    <div class="absolute top-6 right-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center shadow-lg breathe">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="pr-20">
+                        <h3 class="font-display font-bold text-2xl text-dark-900 mb-4">Montage mit Aufmaß</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Qualifiziert im Handwerkerprozess "Montage mit Aufmaß"
+                        </p>
+                        <div class="flex items-center gap-2 text-sm text-primary-600 font-semibold">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            Präzise Maßarbeit garantiert
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certificate 4 -->
+                <div class="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-l-4 border-primary-600 card-glow gradient-shadow spotlight scale-in border-beam">
+                    <div class="absolute top-6 right-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center shadow-lg breathe">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="pr-20">
+                        <h3 class="font-display font-bold text-2xl text-dark-900 mb-4">Handschweißen</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Qualifikation im Handschweißen für metallverarbeitende Arbeiten
+                        </p>
+                        <div class="flex items-center gap-2 text-sm text-primary-600 font-semibold">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            Fachgerechte Schweißarbeiten
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-primary-600 to-primary-700 text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="font-display font-bold text-4xl md:text-5xl mb-6">
+                    Überzeugt von unserer <span class="text-gradient-animated breathe">Expertise</span>?
+                </h2>
+                <p class="text-xl mb-8 text-white/90">
+                    Kontaktieren Sie uns für Ihr nächstes Projekt und profitieren Sie von unserer langjährigen Erfahrung
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="{{ url_for('index') }}#kontakt" class="px-8 py-4 bg-white text-primary-600 rounded-lg hover:bg-gray-100 transition-colors font-semibold text-lg shadow-xl magnetic-btn ripple-effect gradient-shadow">
+                        Jetzt Kontakt aufnehmen
+                    </a>
+                    <a href="{{ url_for('index') }}" class="px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-lg hover:bg-white/20 transition-colors font-semibold text-lg border border-white/20 glass-effect magnetic-btn">
+                        Zurück zur Startseite
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-900 text-gray-400 py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex flex-col mb-4">
+                        <span class="font-display font-bold text-2xl text-white">SCHULZKE</span>
+                        <span class="text-xs text-gray-500 -mt-1">Bau- & Industriemontagen</span>
+                    </div>
+                    <p class="text-sm leading-relaxed">
+                        Ihr zuverlässiger Partner für professionelle Bauleistungen seit 1995.
+                    </p>
+                </div>
+
+                <!-- Leistungen -->
+                <div>
+                    <h4 class="font-display font-semibold text-white text-lg mb-4">Leistungen</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="{{ url_for('index') }}#leistungen" class="hover:text-primary-400 transition-colors">Wartungsarbeiten</a></li>
+                        <li><a href="{{ url_for('index') }}#leistungen" class="hover:text-primary-400 transition-colors">Bauelemente</a></li>
+                        <li><a href="{{ url_for('index') }}#leistungen" class="hover:text-primary-400 transition-colors">Trockenbau</a></li>
+                        <li><a href="{{ url_for('index') }}#leistungen" class="hover:text-primary-400 transition-colors">Fußbodenarbeiten</a></li>
+                    </ul>
+                </div>
+
+                <!-- Unternehmen -->
+                <div>
+                    <h4 class="font-display font-semibold text-white text-lg mb-4">Unternehmen</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="{{ url_for('index') }}#about" class="hover:text-primary-400 transition-colors">Über uns</a></li>
+                        <li><a href="{{ url_for('referenzen_zertifikate') }}" class="hover:text-primary-400 transition-colors">Referenzen & Zertifikate</a></li>
+                        <li><a href="{{ url_for('index') }}#stellenangebote" class="hover:text-primary-400 transition-colors">Karriere</a></li>
+                        <li><a href="{{ url_for('index') }}#kontakt" class="hover:text-primary-400 transition-colors">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <!-- Rechtliches -->
+                <div>
+                    <h4 class="font-display font-semibold text-white text-lg mb-4">Rechtliches</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="{{ url_for('impressum') }}" class="hover:text-primary-400 transition-colors">Impressum</a></li>
+                        <li><a href="{{ url_for('datenschutz') }}" class="hover:text-primary-400 transition-colors">Datenschutz</a></li>
+                        <li><a href="{{ url_for('agb') }}" class="hover:text-primary-400 transition-colors">AGB</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white/10 text-center text-sm">
+                <p>&copy; 2024 Schulzke Bau- & Industriemontagen. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuToggle?.addEventListener('click', () => {
+            mobileMenu?.classList.toggle('hidden');
+        });
+    </script>
+    <script src="{{ url_for('static', filename='modern-interactions.js') }}"></script>
+    <script src="{{ url_for('static', filename='parallax-scroll.js') }}"></script>
+</body>
+</html>

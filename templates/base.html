@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Schulzke Bau- & Industriemontagen{% endblock %}</title>
+    <meta name="description" content="{% block description %}Schulzke Bau- & Industriemontagen - Professionelle Bauleistungen seit 1995{% endblock %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fef6ee',
+                            100: '#fdebd6',
+                            200: '#fad4ac',
+                            300: '#f7b577',
+                            400: '#f38b40',
+                            500: '#f06b1a',
+                            600: '#e14f0f',
+                            700: '#ba3a0f',
+                            800: '#942f14',
+                            900: '#782813',
+                        },
+                        dark: {
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='animations.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='modern-effects.css') }}">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-display {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="bg-white text-gray-900 antialiased">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 transition-all" id="navbar" style="position: fixed; top: 0; left: 0; right: 0; z-index: 9999;">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="{{ url_for('index') }}" class="flex items-center gap-3">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}"
+                             alt="Schulzke Bau- & Industriemontagen Logo"
+                             class="h-16 w-auto hover:scale-110 transition-transform duration-300 magnetic-btn"
+                             style="filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));">
+                        <div class="flex flex-col">
+                            <span class="font-display font-bold text-xl text-dark-900 leading-tight">SCHULZKE</span>
+                            <span class="text-xs text-gray-600 -mt-0.5">Bau & Industriemontagen</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="{{ url_for('index') }}#home" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition-colors">Start</a>
+                    <a href="{{ url_for('index') }}#leistungen" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition-colors">Leistungen</a>
+                    <a href="{{ url_for('ablauf') }}" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition-colors">So arbeiten wir</a>
+                    <a href="{{ url_for('referenzen_zertifikate') }}" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition-colors">Referenzen & Zertifikate</a>
+                    <a href="{{ url_for('index') }}#stellenangebote" class="nav-link text-gray-700 hover:text-primary-600 font-medium transition-colors">Karriere</a>
+                    <a href="{{ url_for('index') }}#kontakt" class="bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition-colors font-medium magnetic-btn gradient-shadow">Kontakt</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <button class="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5" id="mobileMenuToggle">
+                    <span class="block w-6 h-0.5 bg-gray-800 transition-all"></span>
+                    <span class="block w-6 h-0.5 bg-gray-800 transition-all"></span>
+                    <span class="block w-6 h-0.5 bg-gray-800 transition-all"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden" id="mobileMenu">
+            <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t">
+                <a href="{{ url_for('index') }}#home" class="block px-3 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600 rounded-md">Start</a>
+                <a href="{{ url_for('index') }}#leistungen" class="block px-3 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600 rounded-md">Leistungen</a>
+                <a href="{{ url_for('ablauf') }}" class="block px-3 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600 rounded-md">So arbeiten wir</a>
+                <a href="{{ url_for('referenzen_zertifikate') }}" class="block px-3 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600 rounded-md">Referenzen & Zertifikate</a>
+                <a href="{{ url_for('index') }}#stellenangebote" class="block px-3 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600 rounded-md">Karriere</a>
+                <a href="{{ url_for('index') }}#kontakt" class="block mx-3 my-2 px-3 py-2 bg-primary-600 text-white text-center rounded-md">Kontakt</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-20">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-900 text-gray-400 py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex flex-col mb-4">
+                        <span class="font-display font-bold text-2xl text-white">SCHULZKE</span>
+                        <span class="text-xs text-gray-500 -mt-1">Bau- & Industriemontagen</span>
+                    </div>
+                    <p class="text-sm leading-relaxed">
+                        Ihr zuverlässiger Partner für professionelle Bauleistungen seit 1995.
+                    </p>
+                </div>
+
+                <!-- Leistungen -->
+                <div>
+                    <h4 class="font-display font-semibold text-white text-lg mb-4">Leistungen</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="{{ url_for('index') }}#leistungen" class="hover:text-primary-400 transition-colors">Wartungsarbeiten</a></li>
+                        <li><a href="{{ url_for('index') }}#leistungen" class="hover:text-primary-400 transition-colors">Bauelemente</a></li>
+                        <li><a href="{{ url_for('index') }}#leistungen" class="hover:text-primary-400 transition-colors">Trockenbau</a></li>
+                        <li><a href="{{ url_for('index') }}#leistungen" class="hover:text-primary-400 transition-colors">Fußbodenarbeiten</a></li>
+                    </ul>
+                </div>
+
+                <!-- Unternehmen -->
+                <div>
+                    <h4 class="font-display font-semibold text-white text-lg mb-4">Unternehmen</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="{{ url_for('index') }}#about" class="hover:text-primary-400 transition-colors">Über uns</a></li>
+                        <li><a href="{{ url_for('index') }}#referenzen" class="hover:text-primary-400 transition-colors">Referenzen</a></li>
+                        <li><a href="{{ url_for('index') }}#stellenangebote" class="hover:text-primary-400 transition-colors">Karriere</a></li>
+                        <li><a href="{{ url_for('index') }}#kontakt" class="hover:text-primary-400 transition-colors">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <!-- Rechtliches -->
+                <div>
+                    <h4 class="font-display font-semibold text-white text-lg mb-4">Rechtliches</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="{{ url_for('impressum') }}" class="hover:text-primary-400 transition-colors">Impressum</a></li>
+                        <li><a href="{{ url_for('datenschutz') }}" class="hover:text-primary-400 transition-colors">Datenschutz</a></li>
+                        <li><a href="{{ url_for('agb') }}" class="hover:text-primary-400 transition-colors">AGB</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white/10 text-center text-sm">
+                <p>&copy; 2024 Schulzke Bau- & Industriemontagen. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='modern-interactions.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
