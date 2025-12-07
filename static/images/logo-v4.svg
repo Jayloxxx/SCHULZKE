@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+  <!-- Aufsteigend - Wachstum/Bau -->
+
+  <!-- Drei aufsteigende Balken die ein S andeuten -->
+  <rect x="10" y="38" width="12" height="18" fill="#374151"/>
+  <rect x="24" y="24" width="12" height="32" fill="#4B5563"/>
+  <rect x="38" y="10" width="12" height="46" fill="#1a1a1a"/>
+
+  <!-- Verbindungslinie oben - Orange Akzent -->
+  <path d="M10 38 L24 24 L38 10" fill="none" stroke="#E85A1E" stroke-width="3" stroke-linecap="round"/>
+</svg>

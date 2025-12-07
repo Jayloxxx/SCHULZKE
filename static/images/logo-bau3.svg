@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+  <!-- BAUHELM mit S -->
+
+  <!-- Helm Hauptform -->
+  <ellipse cx="30" cy="34" rx="24" ry="16" fill="#E85A1E"/>
+
+  <!-- Helm oberer Teil / Kuppel -->
+  <path d="M8 34 Q8 14 30 12 Q52 14 52 34" fill="#E85A1E"/>
+
+  <!-- Helm Krempe -->
+  <ellipse cx="30" cy="38" rx="26" ry="6" fill="#D14A12"/>
+
+  <!-- Helm Streifen -->
+  <rect x="28" y="12" width="4" height="26" fill="#F5A623"/>
+
+  <!-- S auf dem Helm -->
+  <text x="30" y="35" font-family="Arial Black" font-size="18" fill="white" text-anchor="middle" font-weight="bold">S</text>
+
+  <!-- Glanzeffekt -->
+  <ellipse cx="20" cy="22" rx="6" ry="3" fill="white" opacity="0.2"/>
+</svg>

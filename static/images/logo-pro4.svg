@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+  <!-- Minimalistisches S aus Bausteinen/Blöcken -->
+
+  <!-- Block 1 - oben links lang -->
+  <rect x="8" y="6" width="32" height="10" rx="1" fill="#1a1a1a"/>
+
+  <!-- Block 2 - oben rechts kurz -->
+  <rect x="42" y="6" width="10" height="10" rx="1" fill="#E85A1E"/>
+
+  <!-- Block 3 - rechts vertikal -->
+  <rect x="42" y="18" width="10" height="10" rx="1" fill="#1a1a1a"/>
+
+  <!-- Block 4 - mitte -->
+  <rect x="18" y="25" width="24" height="10" rx="1" fill="#2d2d2d"/>
+
+  <!-- Block 5 - links vertikal -->
+  <rect x="8" y="32" width="10" height="10" rx="1" fill="#1a1a1a"/>
+
+  <!-- Block 6 - unten links kurz -->
+  <rect x="8" y="44" width="10" height="10" rx="1" fill="#E85A1E"/>
+
+  <!-- Block 7 - unten rechts lang -->
+  <rect x="20" y="44" width="32" height="10" rx="1" fill="#1a1a1a"/>
+</svg>

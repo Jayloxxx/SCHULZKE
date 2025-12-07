@@ -37,6 +37,11 @@ def index():
     """Homepage route"""
     return render_template('index.html')
 
+@app.route('/logo-preview')
+def logo_preview():
+    """Logo preview page for selection"""
+    return render_template('logo-preview.html')
+
 @app.route('/impressum')
 def impressum():
     """Impressum page"""

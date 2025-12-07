@@ -12,7 +12,9 @@
       "Bash(copy /Y index_new.html index.html)",
       "Bash(git config:*)",
       "Bash(git remote add:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nInitial commit: Schulzke Handwerk Website\n\n- Flask-basierte Portfolio-Website für Handwerksbetrieb\n- Moderne UI mit Animationen und Parallax-Effekten\n- Projektanfrage-Formular mit E-Mail-Integration\n- Responsive Design für alle Geräte\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []

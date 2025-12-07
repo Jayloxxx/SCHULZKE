@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Auswahl - Schulzke Bau</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            min-height: 100vh;
+            padding: 50px 20px;
+            color: white;
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        .subtitle {
+            text-align: center;
+            color: #94A3B8;
+            margin-bottom: 50px;
+            font-size: 0.95rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 20px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+        .card:hover {
+            border-color: rgba(245, 158, 11, 0.4);
+            transform: translateY(-6px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+        .logo-container {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 24px;
+        }
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #F8FAFC;
+        }
+        .card p {
+            color: #94A3B8;
+            font-size: 0.8rem;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        .preview-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 18px;
+            border-radius: 12px;
+            background: rgba(15, 23, 42, 0.6);
+        }
+        .preview-row img {
+            width: 36px;
+            height: 36px;
+        }
+        .preview-row .text {
+            text-align: left;
+        }
+        .preview-row .name {
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.15em;
+            color: #F8FAFC;
+        }
+        .preview-row .tagline {
+            font-size: 0.55rem;
+            letter-spacing: 0.08em;
+            color: #64748B;
+            margin-top: 2px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: linear-gradient(135deg, #F59E0B, #D97706);
+            font-size: 0.65rem;
+            font-weight: 600;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Schulzke Bau - Logo Auswahl</h1>
+    <p class="subtitle">Modern, elegant und passend zur Baubranche</p>
+
+    <div class="grid">
+        <!-- Final 1 -->
+        <div class="card">
+            <span class="badge">Elegant</span>
+            <div class="logo-container">
+                <img src="/static/images/logo-final1.svg" alt="Logo 1">
+            </div>
+            <h3>S mit Dach-Akzent</h3>
+            <p>Elegantes S im Kreis mit kleinem Dach-Symbol. Subtil, modern, Bau-Bezug.</p>
+            <div class="preview-row">
+                <img src="/static/images/logo-final1.svg" alt="">
+                <div class="text">
+                    <div class="name">SCHULZKE</div>
+                    <div class="tagline">BAU & INDUSTRIEMONTAGEN</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final 2 -->
+        <div class="card">
+            <span class="badge">Modern</span>
+            <div class="logo-container">
+                <img src="/static/images/logo-final2.svg" alt="Logo 2">
+            </div>
+            <h3>Aufsteigende Linien</h3>
+            <p>Zwei Linien die aufsteigen wie Gebäude. Wachstum und Fortschritt.</p>
+            <div class="preview-row">
+                <img src="/static/images/logo-final2.svg" alt="">
+                <div class="text">
+                    <div class="name">SCHULZKE</div>
+                    <div class="tagline">BAU & INDUSTRIEMONTAGEN</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final 3 -->
+        <div class="card">
+            <span class="badge">Premium</span>
+            <div class="logo-container">
+                <img src="/static/images/logo-final3.svg" alt="Logo 3">
+            </div>
+            <h3>SB Monogramm</h3>
+            <p>Klassisches SB für Schulzke Bau. Premium-Look mit Gold-Akzent.</p>
+            <div class="preview-row">
+                <img src="/static/images/logo-final3.svg" alt="">
+                <div class="text">
+                    <div class="name">SCHULZKE</div>
+                    <div class="tagline">BAU & INDUSTRIEMONTAGEN</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final 4 -->
+        <div class="card">
+            <span class="badge">Klassisch</span>
+            <div class="logo-container">
+                <img src="/static/images/logo-final4.svg" alt="Logo 4">
+            </div>
+            <h3>Haus mit S</h3>
+            <p>S im Haus-Umriss. Klarer Bau-Bezug, freundlich, vertrauenswürdig.</p>
+            <div class="preview-row">
+                <img src="/static/images/logo-final4.svg" alt="">
+                <div class="text">
+                    <div class="name">SCHULZKE</div>
+                    <div class="tagline">BAU & INDUSTRIEMONTAGEN</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final 5 -->
+        <div class="card">
+            <span class="badge">Minimalist</span>
+            <div class="logo-container">
+                <img src="/static/images/logo-final5.svg" alt="Logo 5">
+            </div>
+            <h3>S mit Wachstums-Linie</h3>
+            <p>Cleanes S mit aufsteigender Akzent-Linie. Growth, Ambition, Zukunft.</p>
+            <div class="preview-row">
+                <img src="/static/images/logo-final5.svg" alt="">
+                <div class="text">
+                    <div class="name">SCHULZKE</div>
+                    <div class="tagline">BAU & INDUSTRIEMONTAGEN</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final 6 -->
+        <div class="card">
+            <span class="badge">Solide</span>
+            <div class="logo-container">
+                <img src="/static/images/logo-final6.svg" alt="Logo 6">
+            </div>
+            <h3>Sechseck mit S</h3>
+            <p>Sechseck = Stabilität + Stärke. Goldenes S. Vertrauen und Beständigkeit.</p>
+            <div class="preview-row">
+                <img src="/static/images/logo-final6.svg" alt="">
+                <div class="text">
+                    <div class="name">SCHULZKE</div>
+                    <div class="tagline">BAU & INDUSTRIEMONTAGEN</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

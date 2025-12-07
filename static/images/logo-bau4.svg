@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+  <!-- HAMMER & MEISSEL mit S -->
+
+  <!-- Hintergrund Kreis -->
+  <circle cx="30" cy="30" r="28" fill="#2C3E50"/>
+
+  <!-- Hammer -->
+  <rect x="12" y="8" width="8" height="20" rx="1" fill="#7F8C8D"/>
+  <rect x="14" y="26" width="4" height="22" fill="#8B4513"/>
+
+  <!-- Schraubenschlüssel -->
+  <rect x="38" y="10" width="4" height="28" fill="#7F8C8D"/>
+  <circle cx="40" cy="10" r="6" fill="#7F8C8D"/>
+  <circle cx="40" cy="10" r="3" fill="#2C3E50"/>
+  <rect x="36" y="38" width="8" height="4" rx="1" fill="#7F8C8D"/>
+
+  <!-- S in der Mitte -->
+  <text x="30" y="38" font-family="Arial Black" font-size="20" fill="#E85A1E" text-anchor="middle" font-weight="bold">S</text>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+  <!-- Dunkel und stark - Stahlträger S -->
+  <rect x="4" y="4" width="52" height="52" rx="4" fill="#2C3E50"/>
+
+  <!-- S aus zwei Stahlträgern/I-Beams -->
+  <path d="M18 12 L42 12 L42 16 L22 16 L22 26 L42 26 L42 34 L22 34 L22 44 L42 44 L42 48 L18 48 L18 34 L38 34 L38 30 L18 30 Z"
+        fill="#E85A1E"/>
+</svg>

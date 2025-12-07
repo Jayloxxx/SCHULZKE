@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+  <!-- Elegantes SB Monogramm mit Dach-Akzent -->
+  <defs>
+    <linearGradient id="elegant1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B"/>
+      <stop offset="100%" style="stop-color:#D97706"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Kreis Hintergrund -->
+  <circle cx="30" cy="30" r="28" fill="#1F2937"/>
+
+  <!-- Stilisiertes S -->
+  <path d="M20 18 C20 18 24 14 32 14 C40 14 44 18 44 23 C44 28 40 30 32 31 C24 32 20 34 20 39 C20 44 24 48 32 48 C40 48 44 44 44 44"
+        fill="none" stroke="url(#elegant1)" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Kleines Dach/Haus Symbol oben -->
+  <path d="M26 8 L30 4 L34 8" fill="none" stroke="url(#elegant1)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

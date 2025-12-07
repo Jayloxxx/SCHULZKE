@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+  <!-- Zwei Gebäude die zusammen ein S formen -->
+  <defs>
+    <linearGradient id="building1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a"/>
+      <stop offset="100%" style="stop-color:#2d2d2d"/>
+    </linearGradient>
+    <linearGradient id="building2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E85A1E"/>
+      <stop offset="100%" style="stop-color:#C54A15"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Oberes Gebäude (nach rechts) - oberer Bogen des S -->
+  <rect x="6" y="4" width="42" height="16" rx="2" fill="url(#building1)"/>
+  <rect x="36" y="4" width="12" height="28" rx="2" fill="url(#building1)"/>
+
+  <!-- Mittlere Verbindung -->
+  <rect x="12" y="24" width="36" height="12" rx="2" fill="url(#building2)"/>
+
+  <!-- Unteres Gebäude (nach links) - unterer Bogen des S -->
+  <rect x="12" y="28" width="12" height="28" rx="2" fill="url(#building1)"/>
+  <rect x="12" y="40" width="42" height="16" rx="2" fill="url(#building1)"/>
+
+  <!-- Fenster-Akzente -->
+  <rect x="10" y="8" width="4" height="4" fill="#E85A1E" opacity="0.6"/>
+  <rect x="18" y="8" width="4" height="4" fill="#E85A1E" opacity="0.6"/>
+  <rect x="26" y="8" width="4" height="4" fill="#E85A1E" opacity="0.6"/>
+  <rect x="40" y="16" width="4" height="4" fill="#E85A1E" opacity="0.6"/>
+  <rect x="16" y="44" width="4" height="4" fill="#E85A1E" opacity="0.6"/>
+  <rect x="38" y="48" width="4" height="4" fill="#E85A1E" opacity="0.6"/>
+  <rect x="46" y="48" width="4" height="4" fill="#E85A1E" opacity="0.6"/>
+</svg>

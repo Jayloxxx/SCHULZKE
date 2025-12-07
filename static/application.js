@@ -101,6 +101,10 @@ function removeFile(type) {
 // Close modal when clicking outside
 document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('applicationModal');
+
+    // Only initialize if application modal exists (Karriere page)
+    if (!modal) return;
+
     modal.addEventListener('click', function(e) {
         if (e.target === modal) {
             closeApplicationModal();
@@ -117,7 +121,10 @@ document.addEventListener('DOMContentLoaded', function() {
     setupDragAndDrop('documentsDropzone', 'documentsInput', 'documentsPlaceholder', 'documentsPreview', null, true);
 
     // Form submission
-    document.getElementById('applicationForm').addEventListener('submit', handleApplicationSubmit);
+    const applicationForm = document.getElementById('applicationForm');
+    if (applicationForm) {
+        applicationForm.addEventListener('submit', handleApplicationSubmit);
+    }
 });
 
 function setupDragAndDrop(dropzoneId, inputId, placeholderId, previewId, fileNameId, multiple) {
@@ -125,6 +132,9 @@ function setupDragAndDrop(dropzoneId, inputId, placeholderId, previewId, fileNam
     const input = document.getElementById(inputId);
     const placeholder = document.getElementById(placeholderId);
     const preview = document.getElementById(previewId);
+
+    // Check if elements exist (only on pages with application form)
+    if (!dropzone || !input) return;
 
     // Click to upload
     dropzone.addEventListener('click', () => input.click());

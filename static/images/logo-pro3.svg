@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+  <!-- Stahlträger/I-Beam die ein S formen -->
+  <defs>
+    <linearGradient id="beam" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#5A6978"/>
+      <stop offset="50%" style="stop-color:#3D4852"/>
+      <stop offset="100%" style="stop-color:#5A6978"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Oberer horizontaler Träger -->
+  <rect x="8" y="6" width="44" height="4" fill="#2D3748"/>
+  <rect x="8" y="10" width="44" height="8" fill="url(#beam)"/>
+  <rect x="8" y="18" width="44" height="4" fill="#2D3748"/>
+
+  <!-- Rechter vertikaler Träger -->
+  <rect x="40" y="18" width="4" height="10" fill="#2D3748"/>
+  <rect x="36" y="18" width="4" height="10" fill="url(#beam)"/>
+  <rect x="44" y="18" width="4" height="10" fill="url(#beam)"/>
+
+  <!-- Mittlerer horizontaler Träger -->
+  <rect x="8" y="24" width="44" height="4" fill="#2D3748"/>
+  <rect x="8" y="28" width="44" height="8" fill="url(#beam)"/>
+  <rect x="8" y="36" width="44" height="4" fill="#2D3748"/>
+
+  <!-- Linker vertikaler Träger -->
+  <rect x="12" y="36" width="4" height="10" fill="#2D3748"/>
+  <rect x="8" y="36" width="4" height="10" fill="url(#beam)"/>
+  <rect x="16" y="36" width="4" height="10" fill="url(#beam)"/>
+
+  <!-- Unterer horizontaler Träger -->
+  <rect x="8" y="42" width="44" height="4" fill="#2D3748"/>
+  <rect x="8" y="46" width="44" height="8" fill="url(#beam)"/>
+  <rect x="8" y="54" width="44" height="4" fill="#2D3748"/>
+
+  <!-- Nieten/Bolzen Akzente -->
+  <circle cx="12" cy="14" r="2" fill="#E85A1E"/>
+  <circle cx="48" cy="14" r="2" fill="#E85A1E"/>
+  <circle cx="12" cy="32" r="2" fill="#E85A1E"/>
+  <circle cx="48" cy="32" r="2" fill="#E85A1E"/>
+  <circle cx="12" cy="50" r="2" fill="#E85A1E"/>
+  <circle cx="48" cy="50" r="2" fill="#E85A1E"/>
+</svg>
