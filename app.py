@@ -342,43 +342,174 @@ def save_application_to_file(app_dir, position, firstname, lastname, email, phon
 
 def send_application_email(position, firstname, lastname, email, phone,
                           address, zipcode, city, message, files_saved, app_dir):
-    """Send email notification for application"""
+    """Send email notification for application with beautiful HTML template"""
     if not app.config['MAIL_USERNAME']:
         print("Email not configured - skipping email notification")
         return
 
     msg = Message(
         subject=f"Neue Bewerbung: {position} - {firstname} {lastname}",
-        recipients=['schulzkebau@t-online.de'],  # Change to your email
+        recipients=['schulzkebau@t-online.de'],
         reply_to=email
     )
 
-    msg.body = f"""
-Neue Bewerbung über die Website
+    # Plain text fallback
+    msg.body = f"Neue Bewerbung von {firstname} {lastname} ({email}) für die Position: {position}"
 
-Position: {position}
+    # Build documents list HTML
+    docs_count = len(files_saved)
+    docs_html = ""
+    if docs_count > 0:
+        docs_list = ""
+        for file_type, filename in files_saved.items():
+            file_label = file_type.replace('_', ' ').title()
+            docs_list += f"""
+                <tr>
+                    <td style="padding: 10px 15px; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <span style="color: #E85A1E; font-weight: 600;">{file_label}:</span>
+                        <span style="color: #fff; margin-left: 8px;">{filename}</span>
+                    </td>
+                </tr>
+            """
+        docs_html = f"""
+                                <!-- Documents -->
+                                <table width="100%" cellpadding="0" cellspacing="0" style="background: linear-gradient(135deg, #1a1a1a, #2d2d2d); border-radius: 8px; margin-bottom: 25px;">
+                                    <tr>
+                                        <td style="padding: 20px;">
+                                            <table width="100%" cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td>
+                                                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                                                            <div style="width: 44px; height: 44px; background: linear-gradient(135deg, #E85A1E, #F5A623); border-radius: 10px; text-align: center; line-height: 44px;">
+                                                                <span style="font-size: 20px;">📎</span>
+                                                            </div>
+                                                            <div>
+                                                                <span style="color: #fff; font-size: 16px; font-weight: 600;">{docs_count} Dokument(e) angehängt</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                {docs_list}
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+        """
 
-BEWERBER-DATEN:
-Name: {firstname} {lastname}
-E-Mail: {email}
-Telefon: {phone}
-Adresse: {address}
-PLZ/Stadt: {zipcode} {city}
+    # Full address for display
+    full_address = f"{address}, {zipcode} {city}" if address else f"{zipcode} {city}"
 
-NACHRICHT:
-{message}
+    msg.html = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body style="margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; background-color: #f5f5f5;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f5f5f5; padding: 40px 20px;">
+            <tr>
+                <td align="center">
+                    <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                        <!-- Header -->
+                        <tr>
+                            <td style="background: linear-gradient(135deg, #2563eb, #1d4ed8); padding: 30px 40px; text-align: center;">
+                                <div style="width: 60px; height: 60px; background: rgba(255,255,255,0.2); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center;">
+                                    <span style="font-size: 28px;">👤</span>
+                                </div>
+                                <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 700;">Neue Bewerbung</h1>
+                                <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0; font-size: 18px; font-weight: 500;">{position}</p>
+                            </td>
+                        </tr>
 
-DOKUMENTE:
-{chr(10).join([f'- {file_type}: {filename}' for file_type, filename in files_saved.items()])}
+                        <!-- Content -->
+                        <tr>
+                            <td style="padding: 40px;">
+                                <!-- Applicant Info -->
+                                <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f9fa; border-radius: 8px; margin-bottom: 25px;">
+                                    <tr>
+                                        <td style="padding: 25px;">
+                                            <h3 style="color: #2563eb; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 20px 0;">Bewerber-Daten</h3>
+                                            <table width="100%" cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td style="padding: 8px 0; border-bottom: 1px solid #e9ecef;">
+                                                        <span style="color: #6c757d; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Name</span><br>
+                                                        <span style="color: #212529; font-size: 20px; font-weight: 700;">{firstname} {lastname}</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding: 15px 0 8px 0; border-bottom: 1px solid #e9ecef;">
+                                                        <span style="color: #6c757d; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">E-Mail</span><br>
+                                                        <a href="mailto:{email}" style="color: #2563eb; font-size: 16px; font-weight: 600; text-decoration: none;">{email}</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding: 15px 0 8px 0; border-bottom: 1px solid #e9ecef;">
+                                                        <span style="color: #6c757d; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Telefon</span><br>
+                                                        <a href="tel:{phone}" style="color: #2563eb; font-size: 16px; font-weight: 600; text-decoration: none;">{phone}</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding: 15px 0 0 0;">
+                                                        <span style="color: #6c757d; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Adresse</span><br>
+                                                        <span style="color: #212529; font-size: 16px; font-weight: 600;">{full_address}</span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
 
-Die vollständige Bewerbung wurde gespeichert in: {app_dir}
+                                <!-- Message -->
+                                <h3 style="color: #212529; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 15px 0;">Anschreiben / Nachricht</h3>
+                                <div style="background-color: #fff; border-left: 4px solid #2563eb; padding: 20px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 25px;">
+                                    <p style="color: #495057; font-size: 15px; line-height: 1.7; margin: 0; white-space: pre-wrap;">{message if message else 'Keine Nachricht hinterlassen.'}</p>
+                                </div>
+
+{docs_html}
+
+                                <!-- Quick Actions -->
+                                <table width="100%" cellpadding="0" cellspacing="0" style="margin-top: 30px;">
+                                    <tr>
+                                        <td align="center" style="padding-right: 10px;" width="50%">
+                                            <a href="mailto:{email}?subject=Re: Ihre Bewerbung als {position}" style="display: block; background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; padding: 14px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px;">✉️ Antworten</a>
+                                        </td>
+                                        <td align="center" style="padding-left: 10px;" width="50%">
+                                            <a href="tel:{phone}" style="display: block; background: #1a1a1a; color: #ffffff; padding: 14px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px;">📞 Anrufen</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <!-- Footer -->
+                        <tr>
+                            <td style="background-color: #1a1a1a; padding: 25px 40px; text-align: center;">
+                                <p style="color: #888; font-size: 13px; margin: 0;">Schulzke Bau- & Industriemontagen</p>
+                                <p style="color: #666; font-size: 12px; margin: 8px 0 0 0;">Bewerbung über schulzkebau.com</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </body>
+    </html>
     """
 
     # Attach files to email
     for file_type, filename in files_saved.items():
         filepath = os.path.join(app_dir, filename)
-        with open(filepath, 'rb') as f:
-            msg.attach(filename, 'application/octet-stream', f.read())
+        if os.path.exists(filepath):
+            with open(filepath, 'rb') as f:
+                # Determine content type
+                content_type = 'application/octet-stream'
+                if filename.lower().endswith('.pdf'):
+                    content_type = 'application/pdf'
+                elif filename.lower().endswith('.doc'):
+                    content_type = 'application/msword'
+                elif filename.lower().endswith('.docx'):
+                    content_type = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+                msg.attach(filename, content_type, f.read())
 
     mail.send(msg)
     print("Application email sent successfully")
