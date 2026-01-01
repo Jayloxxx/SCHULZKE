@@ -37,13 +37,22 @@
             <h2 class="font-display font-bold text-2xl text-dark-900 mb-4">Angaben gemäß § 5 DDG</h2>
 
             <div class="bg-gray-50 rounded-xl p-8 mb-8">
-                <p class="text-lg mb-2"><strong class="text-dark-900">Schulzke Bau- & Industriemontagen</strong></p>
-                <p class="text-gray-600 mb-1">Inhaber: Lars Schulzke</p>
-                <p class="text-gray-600 mb-1">Fliederweg 7</p>
-                <p class="text-gray-600 mb-4">16761 Hennigsdorf</p>
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+                    <!-- Company Info -->
+                    <div class="flex-1">
+                        <p class="text-lg mb-2"><strong class="text-dark-900">Schulzke Bau- & Industriemontagen</strong></p>
+                        <p class="text-gray-600 mb-1">Inhaber: Lars Schulzke</p>
+                        <p class="text-gray-600 mb-1">Fliederweg 7</p>
+                        <p class="text-gray-600 mb-4">16761 Hennigsdorf</p>
 
-                <p class="text-gray-600 mb-1"><strong class="text-dark-900">Telefon:</strong> +49 172 3285710</p>
-                <p class="text-gray-600 mb-1"><strong class="text-dark-900">E-Mail:</strong> schulzkebau@t-online.de</p>
+                        <p class="text-gray-600 mb-1"><strong class="text-dark-900">Telefon:</strong> +49 172 3285710</p>
+                        <p class="text-gray-600 mb-1"><strong class="text-dark-900">E-Mail:</strong> schulzkebau@t-online.de</p>
+                    </div>
+                    <!-- Logo -->
+                    <div class="flex-shrink-0">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Schulzke Bau- & Industriemontagen Logo" class="w-32 h-32 md:w-40 md:h-40 object-contain">
+                    </div>
+                </div>
             </div>
 
             <h2 class="font-display font-bold text-2xl text-dark-900 mb-4 mt-12">Umsatzsteuer-ID</h2>
