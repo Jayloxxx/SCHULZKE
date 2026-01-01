@@ -494,7 +494,7 @@ def save_project_to_file(project_dir, firstname, lastname, email, phone,
 
 def send_project_email(firstname, lastname, email, phone, address, zipcode, city,
                       category, description, photos_saved, project_dir):
-    """Send email notification for project inquiry"""
+    """Send email notification for project inquiry with inline images"""
     if not app.config['MAIL_USERNAME']:
         print("Email not configured - skipping email notification")
         return
@@ -515,7 +515,58 @@ def send_project_email(firstname, lastname, email, phone, address, zipcode, city
 
     # Photo info
     photo_count = len(photos_saved)
-    photo_text = f"{photo_count} Foto(s) angehängt" if photo_count > 0 else "Keine Fotos"
+    photos_dir = os.path.join(project_dir, 'photos')
+
+    # Build inline photo gallery HTML
+    photo_gallery_html = ""
+    if photo_count > 0:
+        photo_gallery_html = """
+                                <!-- Photo Gallery -->
+                                <h3 style="color: #212529; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin: 25px 0 15px 0;">Projektfotos</h3>
+                                <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 25px;">
+                                    <tr>
+                                        <td>
+        """
+        # Add each photo as inline image
+        for i, photo_name in enumerate(photos_saved[:10]):  # Max 10 photos inline
+            cid = f"photo{i}"
+            photo_gallery_html += f"""
+                                            <div style="margin-bottom: 15px; background: #f8f9fa; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                                                <img src="cid:{cid}" style="width: 100%; max-width: 520px; height: auto; display: block;" alt="Projektfoto {i+1}">
+                                                <div style="padding: 10px 15px; background: #fff;">
+                                                    <span style="color: #6c757d; font-size: 12px;">Foto {i+1} von {photo_count}</span>
+                                                </div>
+                                            </div>
+            """
+        photo_gallery_html += """
+                                        </td>
+                                    </tr>
+                                </table>
+        """
+
+    # Photo count info section
+    photo_info_html = f"""
+                                <!-- Photos Info -->
+                                <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #fff3e6; border-radius: 8px; border: 1px solid #ffe0cc;">
+                                    <tr>
+                                        <td style="padding: 20px;">
+                                            <table width="100%" cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td width="50" valign="top">
+                                                        <div style="width: 44px; height: 44px; background: linear-gradient(135deg, #E85A1E, #F5A623); border-radius: 10px; text-align: center; line-height: 44px;">
+                                                            <span style="font-size: 20px;">📸</span>
+                                                        </div>
+                                                    </td>
+                                                    <td style="padding-left: 15px;">
+                                                        <span style="color: #E85A1E; font-size: 18px; font-weight: 700;">{photo_count} Foto(s)</span><br>
+                                                        <span style="color: #666; font-size: 13px;">{"Oben angezeigt und als Anhang beigefügt" if photo_count > 0 else "Keine Fotos hochgeladen"}</span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+    """
 
     msg.html = f"""
     <!DOCTYPE html>
@@ -605,26 +656,9 @@ def send_project_email(firstname, lastname, email, phone, address, zipcode, city
                                     <p style="color: #495057; font-size: 15px; line-height: 1.7; margin: 0; white-space: pre-wrap;">{description}</p>
                                 </div>
 
-                                <!-- Photos Info -->
-                                <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #fff3e6; border-radius: 8px; border: 1px solid #ffe0cc;">
-                                    <tr>
-                                        <td style="padding: 20px;">
-                                            <table width="100%" cellpadding="0" cellspacing="0">
-                                                <tr>
-                                                    <td width="50" valign="top">
-                                                        <div style="width: 44px; height: 44px; background: linear-gradient(135deg, #E85A1E, #F5A623); border-radius: 10px; text-align: center; line-height: 44px;">
-                                                            <span style="font-size: 20px;">📸</span>
-                                                        </div>
-                                                    </td>
-                                                    <td style="padding-left: 15px;">
-                                                        <span style="color: #E85A1E; font-size: 18px; font-weight: 700;">{photo_count} Foto(s)</span><br>
-                                                        <span style="color: #666; font-size: 13px;">{"Als Anhang beigefügt - bitte E-Mail-Anhänge prüfen" if photo_count > 0 else "Keine Fotos hochgeladen"}</span>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </table>
+{photo_gallery_html}
+
+{photo_info_html}
 
                                 <!-- Quick Actions -->
                                 <table width="100%" cellpadding="0" cellspacing="0" style="margin-top: 30px;">
@@ -655,13 +689,29 @@ def send_project_email(firstname, lastname, email, phone, address, zipcode, city
     </html>
     """
 
-    # Attach photos to email (max 5 to avoid large emails)
-    photos_dir = os.path.join(project_dir, 'photos')
-    for i, photo_name in enumerate(photos_saved[:5]):
+    # Attach photos with Content-ID for inline display AND as regular attachments
+    for i, photo_name in enumerate(photos_saved[:10]):
         photo_path = os.path.join(photos_dir, photo_name)
         if os.path.exists(photo_path):
             with open(photo_path, 'rb') as f:
-                msg.attach(photo_name, 'image/jpeg', f.read())
+                photo_data = f.read()
+                # Determine content type
+                content_type = 'image/jpeg'
+                if photo_name.lower().endswith('.png'):
+                    content_type = 'image/png'
+                elif photo_name.lower().endswith('.gif'):
+                    content_type = 'image/gif'
+                elif photo_name.lower().endswith('.webp'):
+                    content_type = 'image/webp'
+
+                # Attach with Content-ID for inline display
+                msg.attach(
+                    photo_name,
+                    content_type,
+                    photo_data,
+                    'inline',
+                    headers=[['Content-ID', f'<photo{i}>']]
+                )
 
     mail.send(msg)
     print("Project inquiry email sent successfully")
