@@ -12,13 +12,13 @@ app.config['UPLOAD_FOLDER'] = 'applications'
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max upload
 ALLOWED_EXTENSIONS = {'pdf', 'doc', 'docx'}
 
-# Email Configuration - T-Online SMTP
-app.config['MAIL_SERVER'] = 'securesmtp.t-online.de'
+# Email Configuration - Brevo SMTP
+app.config['MAIL_SERVER'] = 'smtp-relay.brevo.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')  # schulzkebau@t-online.de
-app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')  # T-Online E-Mail-Passwort
-app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_USERNAME')
+app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')  # Brevo Login
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')  # Brevo SMTP-Key
+app.config['MAIL_DEFAULT_SENDER'] = ('Schulzke Bau', 'schulzkebau@t-online.de')
 
 mail = Mail(app)
 
