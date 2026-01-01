@@ -132,20 +132,98 @@ def send_contact_email(name, email, phone, subject, message):
 
     msg = Message(
         subject=f"Neue Kontaktanfrage: {subject}",
-        recipients=['schulzkebau@t-online.de'],  # Change to your email
+        recipients=['schulzkebau@t-online.de'],
         reply_to=email
     )
 
-    msg.body = f"""
-Neue Kontaktanfrage über die Website
+    msg.body = f"Neue Kontaktanfrage von {name} ({email}): {message}"
 
-Name: {name}
-Email: {email}
-Telefon: {phone}
-Betreff: {subject}
+    msg.html = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body style="margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; background-color: #f5f5f5;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f5f5f5; padding: 40px 20px;">
+            <tr>
+                <td align="center">
+                    <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                        <!-- Header -->
+                        <tr>
+                            <td style="background: linear-gradient(135deg, #E85A1E, #F5A623); padding: 30px 40px; text-align: center;">
+                                <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 700;">Neue Kontaktanfrage</h1>
+                                <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0; font-size: 16px;">über schulzkebau.com</p>
+                            </td>
+                        </tr>
 
-Nachricht:
-{message}
+                        <!-- Content -->
+                        <tr>
+                            <td style="padding: 40px;">
+                                <!-- Contact Info Box -->
+                                <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f9fa; border-radius: 8px; margin-bottom: 30px;">
+                                    <tr>
+                                        <td style="padding: 25px;">
+                                            <table width="100%" cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td style="padding: 8px 0; border-bottom: 1px solid #e9ecef;">
+                                                        <span style="color: #6c757d; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Name</span><br>
+                                                        <span style="color: #212529; font-size: 16px; font-weight: 600;">{name}</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding: 15px 0 8px 0; border-bottom: 1px solid #e9ecef;">
+                                                        <span style="color: #6c757d; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">E-Mail</span><br>
+                                                        <a href="mailto:{email}" style="color: #E85A1E; font-size: 16px; font-weight: 600; text-decoration: none;">{email}</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding: 15px 0 8px 0; border-bottom: 1px solid #e9ecef;">
+                                                        <span style="color: #6c757d; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Telefon</span><br>
+                                                        <a href="tel:{phone}" style="color: #E85A1E; font-size: 16px; font-weight: 600; text-decoration: none;">{phone}</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding: 15px 0 0 0;">
+                                                        <span style="color: #6c757d; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Betreff</span><br>
+                                                        <span style="color: #212529; font-size: 16px; font-weight: 600;">{subject}</span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <!-- Message -->
+                                <h3 style="color: #212529; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 15px 0;">Nachricht</h3>
+                                <div style="background-color: #fff; border-left: 4px solid #E85A1E; padding: 20px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                                    <p style="color: #495057; font-size: 15px; line-height: 1.7; margin: 0; white-space: pre-wrap;">{message}</p>
+                                </div>
+
+                                <!-- Quick Actions -->
+                                <table width="100%" cellpadding="0" cellspacing="0" style="margin-top: 30px;">
+                                    <tr>
+                                        <td align="center">
+                                            <a href="mailto:{email}?subject=Re: {subject}" style="display: inline-block; background: linear-gradient(135deg, #E85A1E, #F5A623); color: #ffffff; padding: 14px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px;">Direkt antworten</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <!-- Footer -->
+                        <tr>
+                            <td style="background-color: #1a1a1a; padding: 25px 40px; text-align: center;">
+                                <p style="color: #888; font-size: 13px; margin: 0;">Schulzke Bau- & Industriemontagen</p>
+                                <p style="color: #666; font-size: 12px; margin: 8px 0 0 0;">Diese E-Mail wurde automatisch generiert.</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </body>
+    </html>
     """
 
     mail.send(msg)
