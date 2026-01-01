@@ -1335,6 +1335,15 @@
                                       class="w-full px-4 py-4 bg-dark-700 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-all resize-none"></textarea>
                         </div>
 
+                        <!-- Datenschutz Checkbox -->
+                        <div class="flex items-start gap-3">
+                            <input type="checkbox" name="contact_privacy" id="contact_privacy" required
+                                   class="mt-1 w-5 h-5 text-primary-500 bg-dark-700 border-white/20 rounded focus:ring-primary-500">
+                            <label for="contact_privacy" class="text-sm text-white/60">
+                                Ich habe die <a href="{{ url_for('datenschutz') }}" target="_blank" class="text-primary-500 hover:text-primary-400 underline">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. *
+                            </label>
+                        </div>
+
                         <button type="submit"
                                 class="w-full py-4 bg-primary-500 text-white font-semibold rounded-lg hover:bg-primary-600 transition-all duration-300 hover:shadow-[0_0_30px_rgba(232,90,30,0.5)]">
                             Nachricht senden
