@@ -865,6 +865,11 @@ def robots():
     """Serve robots.txt for SEO"""
     return send_from_directory('static', 'robots.txt', mimetype='text/plain')
 
+@app.route('/googlef6cd6c8ab29b46a5.html')
+def google_verification():
+    """Google Search Console verification"""
+    return send_from_directory('static', 'googlef6cd6c8ab29b46a5.html')
+
 @app.errorhandler(404)
 def page_not_found(e):
     """Handle 404 errors"""
