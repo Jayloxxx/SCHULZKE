@@ -9,7 +9,7 @@ app.config['SECRET_KEY'] = 'your-secret-key-here-change-in-production'
 
 # File Upload Configuration
 app.config['UPLOAD_FOLDER'] = 'applications'
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max upload
+app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024  # 50MB max upload
 ALLOWED_EXTENSIONS = {'pdf', 'doc', 'docx'}
 
 # Email Configuration - Brevo SMTP
@@ -387,19 +387,30 @@ Die vollständige Bewerbung wurde gespeichert in: {app_dir}
 def submit_project():
     """Handle project inquiry submissions"""
     try:
-        # Get form data
-        firstname = request.form.get('firstname')
-        lastname = request.form.get('lastname')
+        # Get form data - support both old and new field names
+        name = request.form.get('name', '')
+        name_parts = name.split(' ', 1) if name else ['', '']
+        firstname = request.form.get('firstname') or name_parts[0]
+        lastname = request.form.get('lastname') or (name_parts[1] if len(name_parts) > 1 else '')
         email = request.form.get('email')
         phone = request.form.get('phone')
         address = request.form.get('address', '')
         zipcode = request.form.get('zipcode', '')
         city = request.form.get('city', '')
-        category = request.form.get('category')
-        description = request.form.get('description')
+        category = request.form.get('category') or request.form.get('project_type', '')
+        description = request.form.get('description') or request.form.get('message', '')
+
+        # Additional fields from modal form
+        timeframe = request.form.get('timeframe', '')
+        scope = request.form.get('scope', '')
+        notes = request.form.get('notes', '')
+
+        # Combine description with additional info
+        if timeframe or scope or notes:
+            description = f"{description}\n\nZeitrahmen: {timeframe}\nUmfang: {scope}\nAnmerkungen: {notes}"
 
         # Validate required fields
-        if not all([firstname, lastname, email, phone, category, description]):
+        if not all([firstname, email, phone, category, description]):
             return jsonify({'error': 'Required fields missing'}), 400
 
         # Create project directory with timestamp
@@ -412,10 +423,11 @@ def submit_project():
         photos_dir = os.path.join(project_dir, 'photos')
         os.makedirs(photos_dir, exist_ok=True)
 
-        # Save uploaded photos
+        # Save uploaded photos - check for both 'photos' and 'images' field names
         photos_saved = []
-        if 'photos' in request.files:
-            photos = request.files.getlist('photos')
+        photo_field = 'photos' if 'photos' in request.files else 'images'
+        if photo_field in request.files:
+            photos = request.files.getlist(photo_field)
             for i, photo in enumerate(photos):
                 if photo and photo.filename:
                     # Validate file type
