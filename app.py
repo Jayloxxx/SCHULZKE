@@ -489,42 +489,167 @@ def send_project_email(firstname, lastname, email, phone, address, zipcode, city
 
     msg = Message(
         subject=f"Neue Projektanfrage: {category} - {firstname} {lastname}",
-        recipients=['schulzkebau@t-online.de'],  # Change to your email
+        recipients=['schulzkebau@t-online.de'],
         reply_to=email
     )
 
-    msg.body = f"""
-Neue Projektanfrage über die Website
+    # Create full address for Google Maps
+    full_address = f"{address}, {zipcode} {city}" if address else f"{zipcode} {city}"
+    maps_url = f"https://www.google.com/maps/search/?api=1&query={full_address.replace(' ', '+')}"
+    maps_directions_url = f"https://www.google.com/maps/dir/?api=1&destination={full_address.replace(' ', '+')}"
 
-KONTAKTDATEN:
-Name: {firstname} {lastname}
-E-Mail: {email}
-Telefon: {phone}
-Adresse: {address}
-PLZ/Stadt: {zipcode} {city}
+    # Plain text fallback
+    msg.body = f"Neue Projektanfrage von {firstname} {lastname} ({email}): {category} - {description}"
 
-PROJEKTDETAILS:
-Kategorie: {category}
+    # Photo info
+    photo_count = len(photos_saved)
+    photo_text = f"{photo_count} Foto(s) angehängt" if photo_count > 0 else "Keine Fotos"
 
-Beschreibung:
-{description}
+    msg.html = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body style="margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; background-color: #f5f5f5;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f5f5f5; padding: 40px 20px;">
+            <tr>
+                <td align="center">
+                    <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                        <!-- Header -->
+                        <tr>
+                            <td style="background: linear-gradient(135deg, #E85A1E, #F5A623); padding: 30px 40px; text-align: center;">
+                                <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 700;">Neue Projektanfrage</h1>
+                                <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0; font-size: 16px;">{category}</p>
+                            </td>
+                        </tr>
 
-FOTOS:
-{len(photos_saved)} Foto(s) hochgeladen
+                        <!-- Content -->
+                        <tr>
+                            <td style="padding: 40px;">
+                                <!-- Customer Info -->
+                                <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f9fa; border-radius: 8px; margin-bottom: 25px;">
+                                    <tr>
+                                        <td style="padding: 25px;">
+                                            <h3 style="color: #E85A1E; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 20px 0;">Kundendaten</h3>
+                                            <table width="100%" cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td style="padding: 8px 0; border-bottom: 1px solid #e9ecef;">
+                                                        <span style="color: #6c757d; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Name</span><br>
+                                                        <span style="color: #212529; font-size: 18px; font-weight: 700;">{firstname} {lastname}</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding: 15px 0 8px 0; border-bottom: 1px solid #e9ecef;">
+                                                        <span style="color: #6c757d; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">E-Mail</span><br>
+                                                        <a href="mailto:{email}" style="color: #E85A1E; font-size: 16px; font-weight: 600; text-decoration: none;">{email}</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding: 15px 0 8px 0;">
+                                                        <span style="color: #6c757d; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Telefon</span><br>
+                                                        <a href="tel:{phone}" style="color: #E85A1E; font-size: 16px; font-weight: 600; text-decoration: none;">{phone}</a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
 
-Die vollständige Projektanfrage wurde gespeichert in: {project_dir}
+                                <!-- Address with Maps Link -->
+                                <table width="100%" cellpadding="0" cellspacing="0" style="background: linear-gradient(135deg, #1a1a1a, #2d2d2d); border-radius: 8px; margin-bottom: 25px;">
+                                    <tr>
+                                        <td style="padding: 25px;">
+                                            <table width="100%" cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td width="50" valign="top">
+                                                        <div style="width: 44px; height: 44px; background: linear-gradient(135deg, #E85A1E, #F5A623); border-radius: 10px; text-align: center; line-height: 44px;">
+                                                            <span style="font-size: 20px;">📍</span>
+                                                        </div>
+                                                    </td>
+                                                    <td style="padding-left: 15px;">
+                                                        <span style="color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Projektadresse</span><br>
+                                                        <span style="color: #fff; font-size: 16px; font-weight: 600; line-height: 1.5;">{address}<br>{zipcode} {city}</span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <table width="100%" cellpadding="0" cellspacing="0" style="margin-top: 20px;">
+                                                <tr>
+                                                    <td align="center" style="padding-right: 8px;" width="50%">
+                                                        <a href="{maps_url}" style="display: block; background: rgba(255,255,255,0.1); color: #fff; padding: 12px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 13px; border: 1px solid rgba(255,255,255,0.2);">📍 In Maps öffnen</a>
+                                                    </td>
+                                                    <td align="center" style="padding-left: 8px;" width="50%">
+                                                        <a href="{maps_directions_url}" style="display: block; background: linear-gradient(135deg, #E85A1E, #F5A623); color: #fff; padding: 12px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 13px;">🚗 Route starten</a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <!-- Project Description -->
+                                <h3 style="color: #212529; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 15px 0;">Projektbeschreibung</h3>
+                                <div style="background-color: #fff; border-left: 4px solid #E85A1E; padding: 20px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 25px;">
+                                    <p style="color: #495057; font-size: 15px; line-height: 1.7; margin: 0; white-space: pre-wrap;">{description}</p>
+                                </div>
+
+                                <!-- Photos Info -->
+                                <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #fff3e6; border-radius: 8px; border: 1px solid #ffe0cc;">
+                                    <tr>
+                                        <td style="padding: 20px;">
+                                            <table width="100%" cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td width="50" valign="top">
+                                                        <div style="width: 44px; height: 44px; background: linear-gradient(135deg, #E85A1E, #F5A623); border-radius: 10px; text-align: center; line-height: 44px;">
+                                                            <span style="font-size: 20px;">📸</span>
+                                                        </div>
+                                                    </td>
+                                                    <td style="padding-left: 15px;">
+                                                        <span style="color: #E85A1E; font-size: 18px; font-weight: 700;">{photo_count} Foto(s)</span><br>
+                                                        <span style="color: #666; font-size: 13px;">{"Als Anhang beigefügt - bitte E-Mail-Anhänge prüfen" if photo_count > 0 else "Keine Fotos hochgeladen"}</span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <!-- Quick Actions -->
+                                <table width="100%" cellpadding="0" cellspacing="0" style="margin-top: 30px;">
+                                    <tr>
+                                        <td align="center" style="padding-right: 10px;" width="50%">
+                                            <a href="mailto:{email}?subject=Re: Projektanfrage {category}" style="display: block; background: linear-gradient(135deg, #E85A1E, #F5A623); color: #ffffff; padding: 14px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px;">✉️ Antworten</a>
+                                        </td>
+                                        <td align="center" style="padding-left: 10px;" width="50%">
+                                            <a href="tel:{phone}" style="display: block; background: #1a1a1a; color: #ffffff; padding: 14px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px;">📞 Anrufen</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <!-- Footer -->
+                        <tr>
+                            <td style="background-color: #1a1a1a; padding: 25px 40px; text-align: center;">
+                                <p style="color: #888; font-size: 13px; margin: 0;">Schulzke Bau- & Industriemontagen</p>
+                                <p style="color: #666; font-size: 12px; margin: 8px 0 0 0;">Projektanfrage über schulzkebau.com</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </body>
+    </html>
     """
 
     # Attach photos to email (max 5 to avoid large emails)
     photos_dir = os.path.join(project_dir, 'photos')
-    for i, photo_name in enumerate(photos_saved[:5]):  # Limit to 5 photos in email
+    for i, photo_name in enumerate(photos_saved[:5]):
         photo_path = os.path.join(photos_dir, photo_name)
         if os.path.exists(photo_path):
             with open(photo_path, 'rb') as f:
                 msg.attach(photo_name, 'image/jpeg', f.read())
-
-    if len(photos_saved) > 5:
-        msg.body += f"\n\nHinweis: {len(photos_saved) - 5} weitere Foto(s) wurden gespeichert, aber nicht an diese E-Mail angehängt."
 
     mail.send(msg)
     print("Project inquiry email sent successfully")
