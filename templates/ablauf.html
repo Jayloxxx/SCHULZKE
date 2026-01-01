@@ -853,25 +853,23 @@ function updateStepDisplay() {
     // Show current step - add active class
     document.getElementById('step' + currentStep).classList.add('active');
 
-    // Update step indicators
+    // Update step indicators with inline styles
     document.querySelectorAll('.step-indicator').forEach((indicator, index) => {
         const stepNum = index + 1;
         const circle = indicator.querySelector('span:first-child');
         const text = indicator.querySelector('span:last-child');
 
         if (stepNum <= currentStep) {
-            circle.classList.remove('bg-white/10', 'text-white/50');
-            circle.classList.add('bg-primary-500', 'text-white');
+            circle.style.background = '#E85A1E';
+            circle.style.color = 'white';
             if (text) {
-                text.classList.remove('text-white/50');
-                text.classList.add('text-white');
+                text.style.color = 'white';
             }
         } else {
-            circle.classList.add('bg-white/10', 'text-white/50');
-            circle.classList.remove('bg-primary-500', 'text-white');
+            circle.style.background = 'rgba(255,255,255,0.1)';
+            circle.style.color = 'rgba(255,255,255,0.5)';
             if (text) {
-                text.classList.add('text-white/50');
-                text.classList.remove('text-white');
+                text.style.color = 'rgba(255,255,255,0.5)';
             }
         }
     });
