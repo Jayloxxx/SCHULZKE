@@ -132,7 +132,7 @@ def send_contact_email(name, email, phone, subject, message):
 
     msg = Message(
         subject=f"Neue Kontaktanfrage: {subject}",
-        recipients=['info@schulzkebau.com'],  # Change to your email
+        recipients=['schulzkebau@t-online.de'],  # Change to your email
         reply_to=email
     )
 
@@ -271,7 +271,7 @@ def send_application_email(position, firstname, lastname, email, phone,
 
     msg = Message(
         subject=f"Neue Bewerbung: {position} - {firstname} {lastname}",
-        recipients=['info@schulzkebau.com'],  # Change to your email
+        recipients=['schulzkebau@t-online.de'],  # Change to your email
         reply_to=email
     )
 
@@ -411,7 +411,7 @@ def send_project_email(firstname, lastname, email, phone, address, zipcode, city
 
     msg = Message(
         subject=f"Neue Projektanfrage: {category} - {firstname} {lastname}",
-        recipients=['info@schulzkebau.com'],  # Change to your email
+        recipients=['schulzkebau@t-online.de'],  # Change to your email
         reply_to=email
     )
 
