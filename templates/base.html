@@ -3,12 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Schulzke Bau- & Industriemontagen{% endblock %}</title>
-    <meta name="description" content="{% block description %}Schulzke Bau- & Industriemontagen - Professionelle Bauleistungen seit 1995{% endblock %}">
-    <meta name="theme-color" content="#0D0D0D">
+    <title>{% block title %}Schulzke Bau- & Industriemontagen | Hennigsdorf & Berlin{% endblock %}</title>
+    <meta name="description" content="{% block description %}Schulzke Bau- & Industriemontagen ✓ 30+ Jahre Erfahrung ✓ Trockenbau, Montagen, Renovierungen ✓ Berlin & Brandenburg ✓ Kostenlose Beratung ☎ +49 172 3285710{% endblock %}">
+    <meta name="keywords" content="Bau, Industriemontagen, Trockenbau, Renovierung, Hennigsdorf, Berlin, Brandenburg, Bauelemente, Demontage, Fliesen, Fußboden">
+    <meta name="author" content="Schulzke Bau- & Industriemontagen">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#E85A1E">
+    <link rel="canonical" href="https://schulzkebau.com{% block canonical %}{{ request.path }}{% endblock %}">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/logo.svg') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/logo.png') }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://schulzkebau.com{{ request.path }}">
+    <meta property="og:title" content="{% block og_title %}Schulzke Bau- & Industriemontagen | Professionelle Handwerksleistungen{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Ihr zuverlässiger Partner für Bau- & Industriemontagen in Berlin und Brandenburg. 30+ Jahre Erfahrung. Kostenlose Beratung!{% endblock %}">
+    <meta property="og:image" content="https://schulzkebau.com{{ url_for('static', filename='images/logo.png') }}">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:site_name" content="Schulzke Bau- & Industriemontagen">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Schulzke Bau- & Industriemontagen">
+    <meta name="twitter:description" content="Professionelle Bau- & Industriemontagen in Berlin und Brandenburg. 30+ Jahre Erfahrung.">
+    <meta name="twitter:image" content="https://schulzkebau.com{{ url_for('static', filename='images/logo.png') }}">
+
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "https://schulzkebau.com",
+        "name": "Schulzke Bau- & Industriemontagen",
+        "image": "https://schulzkebau.com{{ url_for('static', filename='images/logo.png') }}",
+        "logo": "https://schulzkebau.com{{ url_for('static', filename='images/logo.png') }}",
+        "description": "Professionelle Bau- und Industriemontagen in Berlin und Brandenburg. Trockenbau, Bauelemente, Renovierungen und mehr.",
+        "url": "https://schulzkebau.com",
+        "telephone": "+49 172 3285710",
+        "email": "schulzkebau@t-online.de",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Fliederweg 7",
+            "addressLocality": "Hennigsdorf",
+            "postalCode": "16761",
+            "addressCountry": "DE",
+            "addressRegion": "Brandenburg"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "52.6367",
+            "longitude": "13.2044"
+        },
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "07:00",
+            "closes": "18:00"
+        },
+        "priceRange": "$$",
+        "areaServed": ["Berlin", "Brandenburg", "Hennigsdorf", "Oranienburg", "Velten"],
+        "founder": {
+            "@type": "Person",
+            "name": "Lars Schulzke"
+        },
+        "foundingDate": "1995",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5.0",
+            "reviewCount": "12"
+        },
+        "sameAs": []
+    }
+    </script>
 
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

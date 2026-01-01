@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify, send_from_directory
 from flask_mail import Mail, Message
 import os
 from datetime import datetime
@@ -854,6 +854,16 @@ def send_project_email(firstname, lastname, email, phone, address, zipcode, city
 
     mail.send(msg)
     print("Project inquiry email sent successfully")
+
+@app.route('/sitemap.xml')
+def sitemap():
+    """Serve sitemap.xml for SEO"""
+    return send_from_directory('static', 'sitemap.xml', mimetype='application/xml')
+
+@app.route('/robots.txt')
+def robots():
+    """Serve robots.txt for SEO"""
+    return send_from_directory('static', 'robots.txt', mimetype='text/plain')
 
 @app.errorhandler(404)
 def page_not_found(e):

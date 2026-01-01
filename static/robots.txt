@@ -1,0 +1,10 @@
+# robots.txt for schulzkebau.com
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://schulzkebau.com/sitemap.xml
+
+# Disallow admin/private areas
+Disallow: /applications/
+Disallow: /projects/
