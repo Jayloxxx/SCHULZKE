@@ -12,13 +12,13 @@ app.config['UPLOAD_FOLDER'] = 'applications'
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max upload
 ALLOWED_EXTENSIONS = {'pdf', 'doc', 'docx'}
 
-# Email Configuration (Optional - configure if you want email functionality)
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'  # Change to your SMTP server
+# Email Configuration - T-Online SMTP
+app.config['MAIL_SERVER'] = 'securesmtp.t-online.de'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')  # Set in environment variables
-app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')  # Set in environment variables
-app.config['MAIL_DEFAULT_SENDER'] = 'noreply@schulzkebau.com'
+app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')  # schulzkebau@t-online.de
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')  # T-Online E-Mail-Passwort
+app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_USERNAME')
 
 mail = Mail(app)
 
