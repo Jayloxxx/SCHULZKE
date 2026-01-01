@@ -260,12 +260,13 @@ async function handleApplicationSubmit(e) {
     const successMsg = document.getElementById('applicationSuccess');
     const errorMsg = document.getElementById('applicationError');
 
-    // Hide previous messages
-    successMsg.classList.add('hidden');
-    errorMsg.classList.add('hidden');
+    // Hide previous messages (with null checks)
+    if (successMsg) successMsg.classList.add('hidden');
+    if (errorMsg) errorMsg.classList.add('hidden');
 
     // Disable submit button
     submitButton.disabled = true;
+    const originalButtonText = submitButton.textContent;
     submitButton.textContent = 'Wird gesendet...';
 
     try {
@@ -275,7 +276,13 @@ async function handleApplicationSubmit(e) {
         });
 
         if (response.ok) {
-            successMsg.classList.remove('hidden');
+            // Show success message or alert
+            if (successMsg) {
+                successMsg.classList.remove('hidden');
+            } else {
+                alert('Ihre Bewerbung wurde erfolgreich gesendet! Wir melden uns bei Ihnen.');
+            }
+
             form.reset();
             resetFilePreview('cv');
             resetFilePreview('coverLetter');
@@ -286,14 +293,24 @@ async function handleApplicationSubmit(e) {
                 closeApplicationModal();
             }, 3000);
         } else {
-            errorMsg.classList.remove('hidden');
+            // Show error message or alert
+            if (errorMsg) {
+                errorMsg.classList.remove('hidden');
+            } else {
+                alert('Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.');
+            }
         }
     } catch (error) {
         console.error('Error:', error);
-        errorMsg.classList.remove('hidden');
+        // Show error message or alert
+        if (errorMsg) {
+            errorMsg.classList.remove('hidden');
+        } else {
+            alert('Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.');
+        }
     } finally {
         // Re-enable submit button
         submitButton.disabled = false;
-        submitButton.textContent = 'Bewerbung absenden';
+        submitButton.textContent = originalButtonText;
     }
 }
