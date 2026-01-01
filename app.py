@@ -689,7 +689,7 @@ def send_project_email(firstname, lastname, email, phone, address, zipcode, city
     </html>
     """
 
-    # Attach photos with Content-ID for inline display AND as regular attachments
+    # Attach photos with Content-ID for inline display
     for i, photo_name in enumerate(photos_saved[:10]):
         photo_path = os.path.join(photos_dir, photo_name)
         if os.path.exists(photo_path):
@@ -704,13 +704,21 @@ def send_project_email(firstname, lastname, email, phone, address, zipcode, city
                 elif photo_name.lower().endswith('.webp'):
                     content_type = 'image/webp'
 
-                # Attach with Content-ID for inline display
+                # Attach with Content-ID for inline display in email body
                 msg.attach(
                     photo_name,
                     content_type,
                     photo_data,
                     'inline',
                     headers=[['Content-ID', f'<photo{i}>']]
+                )
+
+                # Also attach as regular attachment for download
+                msg.attach(
+                    f"Anhang_{photo_name}",
+                    content_type,
+                    photo_data,
+                    'attachment'
                 )
 
     mail.send(msg)
