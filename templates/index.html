@@ -1284,6 +1284,11 @@
                     <h3 class="font-display text-2xl text-white mb-8 tracking-wide">NACHRICHT SENDEN</h3>
 
                     <form action="/contact" method="POST" id="contactForm" class="space-y-6">
+                        <!-- Honeypot - Spam-Schutz (für Menschen unsichtbar) -->
+                        <div style="position: absolute; left: -9999px;" aria-hidden="true">
+                            <input type="text" name="website_url" tabindex="-1" autocomplete="off">
+                        </div>
+
                         <div>
                             <label for="name" class="block text-sm font-medium text-white/70 mb-2 uppercase tracking-wider">Name *</label>
                             <input type="text" id="name" name="name" required
@@ -1369,6 +1374,10 @@
             <!-- Modal Body -->
             <form id="applicationForm" enctype="multipart/form-data" class="p-6 space-y-6">
                 <input type="hidden" name="position" id="position">
+                <!-- Honeypot - Spam-Schutz (für Menschen unsichtbar) -->
+                <div style="position: absolute; left: -9999px;" aria-hidden="true">
+                    <input type="text" name="website_url" tabindex="-1" autocomplete="off">
+                </div>
 
                 <!-- Personal Data -->
                 <div class="space-y-4">

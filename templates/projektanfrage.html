@@ -68,6 +68,10 @@
         <!-- Main Form -->
         <div class="bg-white rounded-2xl shadow-xl p-8">
             <form id="projectForm" enctype="multipart/form-data">
+                <!-- Honeypot - Spam-Schutz (für Menschen unsichtbar) -->
+                <div style="position: absolute; left: -9999px;" aria-hidden="true">
+                    <input type="text" name="website_url" tabindex="-1" autocomplete="off">
+                </div>
 
                 <!-- Section: Ihre Daten -->
                 <div class="mb-8">

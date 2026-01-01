@@ -1,10 +1,54 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify, send_from_directory
 from flask_mail import Mail, Message
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 from werkzeug.utils import secure_filename
+from collections import defaultdict
+import time
 
 app = Flask(__name__)
+
+# ============ SPAM PROTECTION ============
+# Rate Limiting - speichert Anfragen pro IP
+rate_limit_store = defaultdict(list)
+RATE_LIMIT_MAX_REQUESTS = 5  # Max Anfragen
+RATE_LIMIT_WINDOW = 3600     # Pro Stunde (in Sekunden)
+
+def check_rate_limit(ip):
+    """Prüft ob IP das Rate Limit überschritten hat"""
+    now = time.time()
+    # Alte Einträge entfernen
+    rate_limit_store[ip] = [t for t in rate_limit_store[ip] if now - t < RATE_LIMIT_WINDOW]
+    # Prüfen ob Limit erreicht
+    if len(rate_limit_store[ip]) >= RATE_LIMIT_MAX_REQUESTS:
+        return False  # Limit erreicht
+    # Neue Anfrage speichern
+    rate_limit_store[ip].append(now)
+    return True  # OK
+
+def check_honeypot(form_data):
+    """Prüft ob Honeypot-Feld ausgefüllt wurde (= Bot)"""
+    honeypot_value = form_data.get('website_url', '')  # Verstecktes Feld
+    if honeypot_value:
+        return False  # Bot erkannt
+    return True  # OK (Mensch)
+
+def is_spam_submission(request):
+    """Kombinierte Spam-Prüfung"""
+    ip = request.remote_addr or request.headers.get('X-Forwarded-For', 'unknown')
+
+    # Honeypot Check
+    if not check_honeypot(request.form):
+        print(f"SPAM BLOCKED: Honeypot triggered from {ip}")
+        return True
+
+    # Rate Limit Check
+    if not check_rate_limit(ip):
+        print(f"SPAM BLOCKED: Rate limit exceeded for {ip}")
+        return True
+
+    return False  # Kein Spam
+# =========================================
 app.config['SECRET_KEY'] = 'your-secret-key-here-change-in-production'
 
 # File Upload Configuration
@@ -76,6 +120,11 @@ def projektanfrage():
 def contact():
     """Handle contact form submissions"""
     try:
+        # Spam-Schutz prüfen
+        if is_spam_submission(request):
+            # Bei Spam: Tue so als wäre es erfolgreich (Bots nicht informieren)
+            return render_template('index.html', message_sent=True)
+
         # Get form data
         name = request.form.get('name')
         email = request.form.get('email')
@@ -237,6 +286,10 @@ def allowed_file(filename):
 def apply():
     """Handle job application submissions"""
     try:
+        # Spam-Schutz prüfen
+        if is_spam_submission(request):
+            return jsonify({'success': True, 'message': 'Application received'}), 200
+
         # Get form data
         position = request.form.get('position')
         firstname = request.form.get('firstname')
@@ -518,6 +571,10 @@ def send_application_email(position, firstname, lastname, email, phone,
 def submit_project():
     """Handle project inquiry submissions"""
     try:
+        # Spam-Schutz prüfen
+        if is_spam_submission(request):
+            return jsonify({'success': True, 'message': 'Project inquiry received'}), 200
+
         # Get form data - support both old and new field names
         name = request.form.get('name', '')
         name_parts = name.split(' ', 1) if name else ['', '']
