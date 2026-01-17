@@ -84,8 +84,8 @@
 <section class="relative min-h-screen flex items-center justify-center overflow-hidden" id="home">
     <!-- Video/Image Background -->
     <div class="absolute inset-0 z-0">
-        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&q=80"
-             alt="Baustelle"
+        <img src="{{ url_for('static', filename='images/Industrie_Baustelle.jpg') }}"
+             alt="Industriebaustelle Schulzke Bau"
              class="w-full h-full object-cover scale-105"
              style="filter: brightness(0.4) contrast(1.1);">
     </div>
@@ -179,8 +179,8 @@
                 <div class="relative aspect-square max-w-lg mx-auto">
                     <!-- Main Image -->
                     <div class="absolute inset-4 rounded-2xl overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80"
-                             alt="Bauarbeiter bei der Arbeit"
+                        <img src="{{ url_for('static', filename='images/Innenausbau.jpg') }}"
+                             alt="Trockenbau-Arbeitsplatz mit professionellem Equipment"
                              class="w-full h-full object-cover">
                     </div>
 
@@ -401,10 +401,13 @@
                 Alle Projekte
             </button>
             <button class="filter-btn px-6 py-3 rounded-full border border-white/10 text-white/70 font-medium transition-all hover:border-primary-500/50 hover:text-white" data-filter="industrie">
-                Industriebau
+                Industriemontage
             </button>
-            <button class="filter-btn px-6 py-3 rounded-full border border-white/10 text-white/70 font-medium transition-all hover:border-primary-500/50 hover:text-white" data-filter="gewerbe">
-                Gewerbebau
+            <button class="filter-btn px-6 py-3 rounded-full border border-white/10 text-white/70 font-medium transition-all hover:border-primary-500/50 hover:text-white" data-filter="bauelemente">
+                Bauelemente
+            </button>
+            <button class="filter-btn px-6 py-3 rounded-full border border-white/10 text-white/70 font-medium transition-all hover:border-primary-500/50 hover:text-white" data-filter="innenausbau">
+                Innenausbau
             </button>
             <button class="filter-btn px-6 py-3 rounded-full border border-white/10 text-white/70 font-medium transition-all hover:border-primary-500/50 hover:text-white" data-filter="wohnbau">
                 Wohnbau
@@ -413,93 +416,153 @@
 
         <!-- Projects Grid -->
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Project 1 -->
-            <div class="group relative overflow-hidden rounded-2xl cursor-pointer reveal-on-scroll gallery-item-premium" data-category="industrie" data-caption="Industriehalle Sanierung - 5.000 m²">
+            <!-- Project 1: Laserkabine -->
+            <div class="group relative overflow-hidden rounded-2xl cursor-pointer reveal-on-scroll gallery-item-premium" data-category="industrie" data-caption="LaserVision Schutzkabine - Industriemontage">
                 <div class="aspect-[4/3]">
-                    <img src="https://images.unsplash.com/photo-1565008576549-57569a49371d?w=800&q=80"
-                         alt="Industriehalle"
+                    <img src="{{ url_for('static', filename='images/Laserkabine.jpg') }}"
+                         alt="Laserkabinen-Montage Vorher-Nachher"
                          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                 </div>
                 <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <span class="inline-block px-3 py-1 bg-primary-500 text-white text-xs font-semibold rounded mb-3">Industriebau</span>
-                    <h3 class="font-display text-xl text-white mb-2">INDUSTRIEHALLE SANIERUNG</h3>
-                    <p class="text-white/70 text-sm">Komplette Sanierung einer 5.000 m² Industriehalle</p>
+                    <span class="inline-block px-3 py-1 bg-primary-500 text-white text-xs font-semibold rounded mb-3">Industriemontage</span>
+                    <h3 class="font-display text-xl text-white mb-2">LASERKABINEN-MONTAGE</h3>
+                    <p class="text-white/70 text-sm">Aufbau einer LaserVision Schutzkabine inkl. Kraneinsatz</p>
                 </div>
             </div>
 
-            <!-- Project 2 -->
-            <div class="group relative overflow-hidden rounded-2xl cursor-pointer reveal-on-scroll gallery-item-premium" data-category="gewerbe" data-caption="Bürogebäude Modernisierung">
+            <!-- Project 2: Edle Marmorfliesen -->
+            <div class="group relative overflow-hidden rounded-2xl cursor-pointer reveal-on-scroll gallery-item-premium" data-category="innenausbau" data-caption="Hochwertige Marmorfliesen mit LED">
                 <div class="aspect-[4/3]">
-                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80"
-                         alt="Modernes Bürogebäude"
+                    <img src="{{ url_for('static', filename='images/Innenausbau_edel_fertig.jpg') }}"
+                         alt="Edle Marmorfliesen mit indirekter Beleuchtung"
                          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                 </div>
                 <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <span class="inline-block px-3 py-1 bg-primary-500 text-white text-xs font-semibold rounded mb-3">Gewerbebau</span>
-                    <h3 class="font-display text-xl text-white mb-2">BÜROGEBÄUDE MODERNISIERUNG</h3>
-                    <p class="text-white/70 text-sm">Trockenbau und Innenausbau für modernes Bürogebäude</p>
+                    <span class="inline-block px-3 py-1 bg-primary-500 text-white text-xs font-semibold rounded mb-3">Innenausbau</span>
+                    <h3 class="font-display text-xl text-white mb-2">HOCHWERTIGE WANDFLIESEN</h3>
+                    <p class="text-white/70 text-sm">Edle Marmorfliesen mit integrierter LED-Beleuchtung</p>
                 </div>
             </div>
 
-            <!-- Project 3 -->
-            <div class="group relative overflow-hidden rounded-2xl cursor-pointer reveal-on-scroll gallery-item-premium" data-category="wohnbau" data-caption="Wohnanlage Renovierung">
+            <!-- Project 3: Fliesenarbeiten -->
+            <div class="group relative overflow-hidden rounded-2xl cursor-pointer reveal-on-scroll gallery-item-premium" data-category="innenausbau" data-caption="Professionelle Fliesenverlegung">
                 <div class="aspect-[4/3]">
-                    <img src="https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?w=800&q=80"
-                         alt="Wohnanlage"
+                    <img src="{{ url_for('static', filename='images/Innenausbau_Fließen.jpg') }}"
+                         alt="Fliesenverlegung in Arbeit"
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <span class="inline-block px-3 py-1 bg-primary-500 text-white text-xs font-semibold rounded mb-3">Innenausbau</span>
+                    <h3 class="font-display text-xl text-white mb-2">FLIESENARBEITEN</h3>
+                    <p class="text-white/70 text-sm">Fachgerechte Fliesenverlegung bei Sanierungsprojekt</p>
+                </div>
+            </div>
+
+            <!-- Project 4: Fenstermontage -->
+            <div class="group relative overflow-hidden rounded-2xl cursor-pointer reveal-on-scroll gallery-item-premium" data-category="bauelemente" data-caption="Professionelle Fenstermontage">
+                <div class="aspect-[4/3]">
+                    <img src="{{ url_for('static', filename='images/Innenausbau_fenster.jpg') }}"
+                         alt="Handwerker bei Fenstermontage"
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <span class="inline-block px-3 py-1 bg-primary-500 text-white text-xs font-semibold rounded mb-3">Bauelemente</span>
+                    <h3 class="font-display text-xl text-white mb-2">FENSTERMONTAGE</h3>
+                    <p class="text-white/70 text-sm">Fachgerechter Einbau neuer Fensterelemente</p>
+                </div>
+            </div>
+
+            <!-- Project 5: Innenausbau Vorher-Nachher -->
+            <div class="group relative overflow-hidden rounded-2xl cursor-pointer reveal-on-scroll gallery-item-premium" data-category="wohnbau" data-caption="Kompletter Innenausbau Vorher-Nachher">
+                <div class="aspect-[4/3]">
+                    <img src="{{ url_for('static', filename='images/Innenausbau_Vorher-Nachher.jpg') }}"
+                         alt="Innenausbau Vorher-Nachher Vergleich"
                          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                 </div>
                 <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                     <span class="inline-block px-3 py-1 bg-primary-500 text-white text-xs font-semibold rounded mb-3">Wohnbau</span>
-                    <h3 class="font-display text-xl text-white mb-2">WOHNANLAGE RENOVIERUNG</h3>
-                    <p class="text-white/70 text-sm">Komplette Fußboden- und Fliesenarbeiten</p>
+                    <h3 class="font-display text-xl text-white mb-2">KOMPLETTER INNENAUSBAU</h3>
+                    <p class="text-white/70 text-sm">Vom Rohbau zum fertigen Wohnraum mit Holzverkleidung</p>
                 </div>
             </div>
 
-            <!-- Project 4 -->
-            <div class="group relative overflow-hidden rounded-2xl cursor-pointer reveal-on-scroll gallery-item-premium" data-category="industrie" data-caption="Wartungsvertrag Produktionsanlagen">
+            <!-- Project 6: Fassade Vorher-Nachher -->
+            <div class="group relative overflow-hidden rounded-2xl cursor-pointer reveal-on-scroll gallery-item-premium" data-category="wohnbau" data-caption="Hausbau Vorher-Nachher">
                 <div class="aspect-[4/3]">
-                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80"
-                         alt="Wartungsarbeiten"
-                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                </div>
-                <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <span class="inline-block px-3 py-1 bg-primary-500 text-white text-xs font-semibold rounded mb-3">Industriebau</span>
-                    <h3 class="font-display text-xl text-white mb-2">LANGZEIT-WARTUNGSVERTRAG</h3>
-                    <p class="text-white/70 text-sm">Kontinuierliche Wartung von Produktionsanlagen</p>
-                </div>
-            </div>
-
-            <!-- Project 5 -->
-            <div class="group relative overflow-hidden rounded-2xl cursor-pointer reveal-on-scroll gallery-item-premium" data-category="gewerbe" data-caption="Ladenlokal Umbau">
-                <div class="aspect-[4/3]">
-                    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80"
-                         alt="Ladenlokal"
-                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                </div>
-                <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <span class="inline-block px-3 py-1 bg-primary-500 text-white text-xs font-semibold rounded mb-3">Gewerbebau</span>
-                    <h3 class="font-display text-xl text-white mb-2">LADENLOKAL UMBAU</h3>
-                    <p class="text-white/70 text-sm">Kompletter Innenausbau mit Trockenbau</p>
-                </div>
-            </div>
-
-            <!-- Project 6 -->
-            <div class="group relative overflow-hidden rounded-2xl cursor-pointer reveal-on-scroll gallery-item-premium" data-category="wohnbau" data-caption="Einfamilienhaus Sanierung">
-                <div class="aspect-[4/3]">
-                    <img src="https://images.unsplash.com/photo-1545259741-2ea3ebf61fa3?w=800&q=80"
-                         alt="Einfamilienhaus"
+                    <img src="{{ url_for('static', filename='images/Fassade_vorher-Nacher.jpg') }}"
+                         alt="Einfamilienhaus Vorher-Nachher"
                          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                 </div>
                 <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                     <span class="inline-block px-3 py-1 bg-primary-500 text-white text-xs font-semibold rounded mb-3">Wohnbau</span>
-                    <h3 class="font-display text-xl text-white mb-2">EINFAMILIENHAUS SANIERUNG</h3>
-                    <p class="text-white/70 text-sm">Fenster, Türen und Bodenarbeiten</p>
+                    <h3 class="font-display text-xl text-white mb-2">HAUSBAU KOMPLETT</h3>
+                    <p class="text-white/70 text-sm">Vom Rohbau zum fertigen Einfamilienhaus</p>
+                </div>
+            </div>
+
+            <!-- Project 7: Küche Vorher-Nachher -->
+            <div class="group relative overflow-hidden rounded-2xl cursor-pointer reveal-on-scroll gallery-item-premium" data-category="wohnbau" data-caption="Küchen-Renovierung Vorher-Nachher">
+                <div class="aspect-[4/3]">
+                    <img src="{{ url_for('static', filename='images/Innenausbau_Vorher-Nachher (2).jpg') }}"
+                         alt="Küche Vorher-Nachher Vergleich"
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <span class="inline-block px-3 py-1 bg-primary-500 text-white text-xs font-semibold rounded mb-3">Wohnbau</span>
+                    <h3 class="font-display text-xl text-white mb-2">KÜCHEN-RENOVIERUNG</h3>
+                    <p class="text-white/70 text-sm">Moderne Küche nach kompletter Sanierung</p>
+                </div>
+            </div>
+
+            <!-- Project 8: Markisen -->
+            <div class="group relative overflow-hidden rounded-2xl cursor-pointer reveal-on-scroll gallery-item-premium" data-category="bauelemente" data-caption="Markisenmontage Vorher-Nachher">
+                <div class="aspect-[4/3]">
+                    <img src="{{ url_for('static', filename='images/markisen.jpg') }}"
+                         alt="Markisenmontage Vorher-Nachher"
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <span class="inline-block px-3 py-1 bg-primary-500 text-white text-xs font-semibold rounded mb-3">Bauelemente</span>
+                    <h3 class="font-display text-xl text-white mb-2">MARKISENMONTAGE</h3>
+                    <p class="text-white/70 text-sm">Professionelle Montage von Sonnenschutzanlagen</p>
+                </div>
+            </div>
+
+            <!-- Project 9: Türen & Tore -->
+            <div class="group relative overflow-hidden rounded-2xl cursor-pointer reveal-on-scroll gallery-item-premium" data-category="bauelemente" data-caption="Türen, Tore und Brandschutztüren">
+                <div class="aspect-[4/3]">
+                    <img src="{{ url_for('static', filename='images/dETAILBILD_bAUELEMENTE.jpg') }}"
+                         alt="Haustüren, Garagentore und Brandschutztüren"
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <span class="inline-block px-3 py-1 bg-primary-500 text-white text-xs font-semibold rounded mb-3">Bauelemente</span>
+                    <h3 class="font-display text-xl text-white mb-2">TÜREN & TORE</h3>
+                    <p class="text-white/70 text-sm">Haustüren, Garagentore und Brandschutztüren</p>
+                </div>
+            </div>
+
+            <!-- Project 10: Renovierung in Arbeit -->
+            <div class="group relative overflow-hidden rounded-2xl cursor-pointer reveal-on-scroll gallery-item-premium" data-category="innenausbau" data-caption="Renovierungsarbeiten in Aktion">
+                <div class="aspect-[4/3]">
+                    <img src="{{ url_for('static', filename='images/Innenausbau_mitEquipment.jpg') }}"
+                         alt="Renovierungsraum mit Werkzeugen und Equipment"
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <span class="inline-block px-3 py-1 bg-primary-500 text-white text-xs font-semibold rounded mb-3">Innenausbau</span>
+                    <h3 class="font-display text-xl text-white mb-2">ALTBAU-SANIERUNG</h3>
+                    <p class="text-white/70 text-sm">Komplette Renovierung mit professionellem Equipment</p>
                 </div>
             </div>
         </div>
@@ -675,10 +738,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80"
-                         alt="Team bei der Arbeit"
-                         class="rounded-xl shadow-2xl">
+                <div class="relative h-80 lg:h-96 overflow-hidden rounded-xl">
+                    <img src="{{ url_for('static', filename='images/ordentliches_baubild.jpg') }}"
+                         alt="Professionelle Werkzeuge und Baustelle - Schulzke Bau"
+                         class="w-full h-full object-cover shadow-2xl">
                 </div>
             </div>
         </div>
